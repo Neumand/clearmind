@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NavBar from './NavBar';
+import Home from './Home';
 
 class App extends Component {
   state = {
@@ -23,6 +24,7 @@ class App extends Component {
     return (
       <div>
         <NavBar />
+        <Home />
       </div>
     );
   }
