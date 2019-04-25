@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
   state = {
@@ -21,14 +21,14 @@ class App extends Component {
 
   render() {
     const usersList = this.state.users.map(user => {
-      <li>{user.first_name} {user.last_name} - {user.email}</li>
-    })
+      <li>
+        {user.first_name} {user.last_name} - {user.email}
+      </li>;
+    });
     return (
-      <div className='App'>
+      <div className="App">
         <h1>Users:</h1>
-        <ul>
-          {usersList}
-        </ul>
+        <ul>{usersList}</ul>
       </div>
     );
   }

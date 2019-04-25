@@ -4,12 +4,13 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
-    "axios": "^0.18.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "0.9.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "axios": "^0.18.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
