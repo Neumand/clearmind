@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
 import axios from 'axios';
+import NavBar from './NavBar';
 
 class App extends Component {
   state = {
@@ -20,15 +20,9 @@ class App extends Component {
   }
 
   render() {
-    const usersList = this.state.users.map(user => {
-      <li>
-        {user.first_name} {user.last_name} - {user.email}
-      </li>;
-    });
     return (
-      <div className="App">
-        <h1>Users:</h1>
-        <ul>{usersList}</ul>
+      <div>
+        <NavBar />
       </div>
     );
   }
