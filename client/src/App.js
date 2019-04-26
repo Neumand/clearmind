@@ -6,17 +6,20 @@ import Home from './Home';
 class App extends Component {
   state = {
     users: [],
+    professionals: [],
   };
 
   componentDidMount() {
     axios
-      .get('api/v1/users')
-      .then(response => {
-        console.log(response);
-        this.setState({
-          users: response.data,
-        });
-      })
+      .all([axios.get('api/v1/users'), axios.get('api/v1/professionals')])
+      .then(
+        axios.spread((usersRes, profRes) => {
+          this.setState({
+            users: usersRes.data,
+            professionals: profRes.data,
+          });
+        }),
+      )
       .catch(error => console.log(error));
   }
 
@@ -25,6 +28,7 @@ class App extends Component {
       <div>
         <NavBar />
         <Home />
+        <Team />
       </div>
     );
   }
