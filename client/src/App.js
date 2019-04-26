@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import NavBar from './NavBar';
 import Home from './Home';
+import Team from './Team';
 
 class App extends Component {
   state = {
@@ -27,8 +28,8 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <Home />
-        <Team />
+        {/* <Home /> */}
+        <Team profs={this.state.professionals} />
       </div>
     );
   }
