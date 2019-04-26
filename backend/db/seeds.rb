@@ -107,14 +107,18 @@ puts "---------------"
         name: 'Mindwell',
         address: '7675 Avenue de Fougeray, Montreal, QC, H1K 3K3',
         phone_number: Faker::Base.numerify('514-###-####'),
-        description: 'Affordable psychology clinic offered for all ages.'
+        description: 'Affordable psychology clinic offered for all ages.',
+        latitude: '45.611626',
+        longitude: '-73.5554274'
     })
 
     Clinic.create({
         name: 'La Maison St. Pierre',
         address: '10 Pine Avenue West, Montreal, QC H2W 1P8',
         phone_number: Faker::Base.numerify('514-###-####'),
-        description: 'Psychotherapy centre for individual, couple and family therapy.'
+        description: 'Psychotherapy centre for individual, couple and family therapy.',
+        latitude: '45.5053204',
+        longitude: '-73.5811828'
     })
 
 puts 'Done!'
