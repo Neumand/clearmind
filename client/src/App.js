@@ -2,22 +2,24 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import NavBar from './NavBar';
 import Home from './Home';
-import Team from './Team';
+import Specialists from './Specialists';
+import Resources from './Resources';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 class App extends Component {
   state = {
     users: [],
-    professionals: [],
+    specialists: [],
   };
 
   componentDidMount() {
     axios
       .all([axios.get('api/v1/users'), axios.get('api/v1/professionals')])
       .then(
-        axios.spread((usersRes, profRes) => {
+        axios.spread((usersRes, specRes) => {
           this.setState({
             users: usersRes.data,
-            professionals: profRes.data,
+            specialists: specRes.data,
           });
         }),
       )
@@ -26,11 +28,26 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <NavBar />
-        {/* <Home /> */}
-        <Team profs={this.state.professionals} />
-      </div>
+      <BrowserRouter>
+        <div>
+          <NavBar />
+          <Switch>
+            <div>
+              <Route path='/' component={Home} exact />
+              <Route path='/resources' component={Resources} />
+              <Route
+                path='/specialists'
+                render={props => (
+                  <Specialists
+                    {...props}
+                    specialists={this.state.specialists}
+                  />
+                )}
+              />
+            </div>
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
