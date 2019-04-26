@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       resources :professionals
+      resources :clinics
     end
   end
 

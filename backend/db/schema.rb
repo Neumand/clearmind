@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_04_25_234221) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "expertise"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_04_25_234221) do
     t.string "email"
     t.string "gender"
     t.date "date_of_birth"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

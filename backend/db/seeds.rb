@@ -100,5 +100,21 @@ puts "---------------"
     })
 
 puts "---------------"
+puts "Creating clinics"
+puts "---------------"
+
+    Clinic.create({
+        name: 'Mindwell',
+        address: '7675 Avenue de Fougeray, Montreal, QC, H1K 3K3',
+        phone_number: Faker::Base.numerify('514-###-####'),
+        description: 'Affordable psychology clinic offered for all ages.'
+    })
+
+    Clinic.create({
+        name: 'La Maison St. Pierre',
+        address: '10 Pine Avenue West, Montreal, QC H2W 1P8',
+        phone_number: Faker::Base.numerify('514-###-####'),
+        description: 'Psychotherapy centre for individual, couple and family therapy.'
+    })
 
 puts 'Done!'
