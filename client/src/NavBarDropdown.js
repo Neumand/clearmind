@@ -23,8 +23,8 @@ class NavBarDropdown extends Component {
           Our Network
         </a>
         <div className={menuClass} aria-labelledby='navbarDropdownMenuLink'>
-          <a className='dropdown-item' href='#'>
-            Team
+          <a className='dropdown-item' href='/specialists'>
+            Specialists
           </a>
           <a className='dropdown-item' href='#'>
             Clinics
