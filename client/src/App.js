@@ -18,7 +18,7 @@ class App extends Component {
     axios
       .all([
         axios.get("api/v1/users"),
-        axios.get("api/v1/professionals"),
+        axios.get("api/v1/specialists"),
         axios.get("api/v1/clinics")
       ])
       .then(
