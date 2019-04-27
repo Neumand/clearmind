@@ -2,6 +2,7 @@ import React from "react";
 
 const Specialists = ({ specialists }) => {
   const specList = specialists.map(input => {
+    const modalId = `#book${input.specialist.id}`;
     return (
       <div className="col-md-4">
         <div className="card">
@@ -11,9 +12,9 @@ const Specialists = ({ specialists }) => {
               {input.specialist.first_name} {input.specialist.last_name}
             </h5>
             <p className="card-text">Expertise: {input.specialist.expertise}</p>
-            <a href="#" className="btn btn-dark">
+            <button type='button' className='btn btn-dark' date-toggle='modal' data-target={modalId}>
               Book
-            </a>
+              </button>
           </div>
           <div className="card-footer">
             <small className="text-muted">Clinic: {input.clinic.name} </small>
