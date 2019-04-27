@@ -10,30 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_25_234221) do
+ActiveRecord::Schema.define(version: 2019_04_27_165715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "professional_id"
+    t.bigint "specialist_id"
     t.bigint "clinic_id"
     t.date "date"
-    t.time "time"
-    t.string "user_comments"
-    t.string "professional_comments"
+    t.time "start_time"
+    t.time "end_time"
+    t.boolean "cancelled"
+    t.string "cancellation_reason"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["clinic_id"], name: "index_appointments_on_clinic_id"
-    t.index ["professional_id"], name: "index_appointments_on_professional_id"
+    t.index ["specialist_id"], name: "index_appointments_on_specialist_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "clinics", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.string "phone_number"
+    t.integer "phone_number"
     t.string "description"
     t.string "latitude"
     t.string "longitude"
@@ -41,7 +42,14 @@ ActiveRecord::Schema.define(version: 2019_04_25_234221) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "professionals", force: :cascade do |t|
+  create_table "schedules", force: :cascade do |t|
+    t.time "from"
+    t.time "to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "specialists", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -50,6 +58,10 @@ ActiveRecord::Schema.define(version: 2019_04_25_234221) do
     t.datetime "updated_at", null: false
     t.string "expertise"
     t.string "image"
+    t.bigint "schedule_id"
+    t.bigint "clinic_id"
+    t.index ["clinic_id"], name: "index_specialists_on_clinic_id"
+    t.index ["schedule_id"], name: "index_specialists_on_schedule_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,6 +76,8 @@ ActiveRecord::Schema.define(version: 2019_04_25_234221) do
   end
 
   add_foreign_key "appointments", "clinics"
-  add_foreign_key "appointments", "professionals"
+  add_foreign_key "appointments", "specialists"
   add_foreign_key "appointments", "users"
+  add_foreign_key "specialists", "clinics"
+  add_foreign_key "specialists", "schedules"
 end

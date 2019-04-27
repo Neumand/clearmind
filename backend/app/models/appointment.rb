@@ -1,5 +1,5 @@
 class Appointment < ApplicationRecord
   belongs_to :user
-  belongs_to :professional
+  belongs_to :specialist
   belongs_to :clinic
 end
