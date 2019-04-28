@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Modal, Image, Form } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { setMinutes, setHours, addDays } from 'date-fns';
 
 class Specialists extends React.Component {
   constructor() {
@@ -61,7 +62,8 @@ class Specialists extends React.Component {
                 <Modal.Header closeButton>
                   <Image src={input.specialist.image} rounded />
                   <Modal.Title>
-                    {input.specialist.first_name} {input.specialist.last_name}
+                    Booking a session with: {input.specialist.first_name}{' '}
+                    {input.specialist.last_name}
                   </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -70,22 +72,24 @@ class Specialists extends React.Component {
                       selected={this.state.startDate}
                       onChange={this.handleChange}
                       showTimeSelect
+                      filterDate={this.isWeekday}
+                      timeIntervals={60}
+                      maxTime={setHours(setMinutes(new Date(), 0), 17)}
+                      minTime={setHours(setMinutes(new Date(), 0), 9)}
+                      minDate={addDays(new Date(), 1)}
                       dateFormat='MMMM d, yyyy h:mm aa'
                       placeholderText='Please choose a date and time'
                     />
                     <Form.Group>
                       <Form.Label>Session Details</Form.Label>
                       <Form.Control
-                        placeholder='Is there anything we should before the session?'
+                        placeholder='Is there anything we should know before the session?'
                         as='textarea'
                         rows='3'
                         value={this.state.sessionDetails}
                         onChange={this.onDetailsChange}
                       />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
-                      Confirm
-                    </Button>
                   </Form>
                 </Modal.Body>
                 <Modal.Footer>
@@ -93,7 +97,7 @@ class Specialists extends React.Component {
                     Close
                   </Button>
                   <Button variant='primary' onClick={this.handleClose}>
-                    Save Changes
+                    Confirm
                   </Button>
                 </Modal.Footer>
               </Modal>
