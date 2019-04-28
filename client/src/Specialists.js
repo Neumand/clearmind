@@ -3,6 +3,7 @@ import { Button, Modal, Image, Form } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { setMinutes, setHours, addDays } from 'date-fns';
+import axios from 'axios';
 
 class Specialists extends React.Component {
   constructor() {
@@ -32,6 +33,24 @@ class Specialists extends React.Component {
   // Update the local state when a client enters session detail information.
   onDetailsChange = e => {
     this.setState({ sessionDetails: e.target.value });
+  };
+
+  // Send booking information to the back-end and close the booking modal.
+  submitBooking = e => {
+    axios
+      .post('api/v1/appointments', {
+        user_id: 1,
+        clinic_id: 1,
+        specialist_id: 1,
+        date: this.state.startDate,
+        start_time: '10:00:00',
+        end_time: '11:00:00',
+      })
+      .then(res => {
+        console.log(res.data);
+        this.setState({ startDate: new Date(), sessionDetails: '' });
+        this.handleClose();
+      });
   };
 
   render() {
@@ -96,7 +115,7 @@ class Specialists extends React.Component {
                   <Button variant='secondary' onClick={this.handleClose}>
                     Close
                   </Button>
-                  <Button variant='primary' onClick={this.handleClose}>
+                  <Button variant='primary' onClick={this.submitBooking}>
                     Confirm
                   </Button>
                 </Modal.Footer>
