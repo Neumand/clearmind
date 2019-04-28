@@ -1,25 +1,38 @@
 import React from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Image, Form } from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { setMinutes, setHours, addDays } from 'date-fns';
 
 class Specialists extends React.Component {
   constructor() {
     super();
 
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-
     this.state = {
       activeModal: null,
+      startDate: new Date(),
+      sessionDetails: '',
     };
   }
 
-  handleClose() {
+  handleClose = () => {
     this.setState({ activeModal: null });
-  }
+  };
 
-  handleShow(e, specialist) {
+  handleShow = (e, specialist) => {
     this.setState({ activeModal: specialist });
-  }
+  };
+
+  handleChange = date => {
+    this.setState({
+      startDate: date,
+    });
+  };
+
+  // Update the local state when a client enters session detail information.
+  onDetailsChange = e => {
+    this.setState({ sessionDetails: e.target.value });
+  };
 
   render() {
     const specList = this.props.specialists.map(input => {
@@ -47,19 +60,44 @@ class Specialists extends React.Component {
                 onHide={this.handleClose}
               >
                 <Modal.Header closeButton>
+                  <Image src={input.specialist.image} rounded />
                   <Modal.Title>
-                    {input.specialist.first_name} {input.specialist.last_name}
+                    Booking a session with: {input.specialist.first_name}{' '}
+                    {input.specialist.last_name}
                   </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  Woohoo, you're reading this text in a modal!
+                  <Form>
+                    <DatePicker
+                      selected={this.state.startDate}
+                      onChange={this.handleChange}
+                      showTimeSelect
+                      filterDate={this.isWeekday}
+                      timeIntervals={60}
+                      maxTime={setHours(setMinutes(new Date(), 0), 17)}
+                      minTime={setHours(setMinutes(new Date(), 0), 9)}
+                      minDate={addDays(new Date(), 1)}
+                      dateFormat='MMMM d, yyyy h:mm aa'
+                      placeholderText='Please choose a date and time'
+                    />
+                    <Form.Group>
+                      <Form.Label>Session Details</Form.Label>
+                      <Form.Control
+                        placeholder='Is there anything we should know before the session?'
+                        as='textarea'
+                        rows='3'
+                        value={this.state.sessionDetails}
+                        onChange={this.onDetailsChange}
+                      />
+                    </Form.Group>
+                  </Form>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant='secondary' onClick={this.handleClose}>
                     Close
                   </Button>
                   <Button variant='primary' onClick={this.handleClose}>
-                    Save Changes
+                    Confirm
                   </Button>
                 </Modal.Footer>
               </Modal>
