@@ -11,7 +11,8 @@ class App extends Component {
   state = {
     users: [],
     specialists: [],
-    clinics: []
+    clinics: [],
+    appointments: []
   };
 
   componentDidMount() {
@@ -19,15 +20,17 @@ class App extends Component {
       .all([
         axios.get("api/v1/users"),
         axios.get("api/v1/specialists"),
-        axios.get("api/v1/clinics")
+        axios.get("api/v1/clinics"),
+        axios.get("api/v1/appointments")
       ])
       .then(
-        axios.spread((usersRes, specRes, clicRes) => {
+        axios.spread((usersRes, specRes, clicRes, appoRes) => {
           this.setState({
             users: usersRes.data,
             specialists: specRes.data,
             clinics: clicRes.data
           });
+          console.log(appoRes.data);
         })
       )
       .catch(error => console.log(error));
