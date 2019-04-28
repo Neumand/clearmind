@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Modal, Image, Form } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { setMinutes, setHours, addDays } from 'date-fns';
+import { setMinutes, setHours, addDays, getHours, getMinutes } from 'date-fns';
 import axios from 'axios';
 
 class Specialists extends React.Component {
@@ -36,21 +36,21 @@ class Specialists extends React.Component {
   };
 
   // Send booking information to the back-end and close the booking modal.
-  submitBooking = e => {
+  submitBooking = (e, clinicId, specialistId) => {
     axios
       .post('api/v1/appointments', {
         user_id: 1,
-        clinic_id: 1,
-        specialist_id: 1,
-        date: this.state.startDate,
-        start_time: '10:00:00',
-        end_time: '11:00:00',
+        clinic_id: clinicId,
+        specialist_id: specialistId,
+        date_time: this.state.startDate,
+        session_details: this.state.sessionDetails,
       })
       .then(res => {
         console.log(res.data);
         this.setState({ startDate: new Date(), sessionDetails: '' });
         this.handleClose();
-      });
+      })
+      .catch(error => console.log(error));
   };
 
   render() {
@@ -115,7 +115,16 @@ class Specialists extends React.Component {
                   <Button variant='secondary' onClick={this.handleClose}>
                     Close
                   </Button>
-                  <Button variant='primary' onClick={this.submitBooking}>
+                  <Button
+                    variant='primary'
+                    onClick={e =>
+                      this.submitBooking(
+                        e,
+                        input.clinic.id,
+                        input.specialist.id,
+                      )
+                    }
+                  >
                     Confirm
                   </Button>
                 </Modal.Footer>
