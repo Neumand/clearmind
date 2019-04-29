@@ -7,7 +7,7 @@ Knock.setup do |config|
       user = User.find_by_email(email)
       render json: {
           jwt: auth_token.token,
-          user: {user_id: user.id, user_first_name: user.first_name}
+          user: {id: user.id, first_name: user.first_name}
         }, status: :created
     end
   
