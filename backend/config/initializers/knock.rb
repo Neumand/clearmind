@@ -1,5 +1,18 @@
 Knock.setup do |config|
 
+  Knock::AuthTokenController.class_eval do
+
+    def create
+      email = params[:auth][:email]
+      user = User.find_by_email(email)
+      render json: {
+          jwt: auth_token.token,
+          user: {user_id: user.id, user_first_name: user.first_name}
+        }, status: :created
+    end
+  
+  end
+
   ## Expiration claim
   ## ----------------
   ##
