@@ -5,6 +5,7 @@ import Home from "./Home";
 import Specialists from "./Specialists";
 import Resources from "./Resources";
 import Clinics from "./Clinics";
+import Login from './Login';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -45,6 +46,7 @@ class App extends Component {
             <div>
               <Route path="/" component={Home} exact />
               <Route path="/resources" component={Resources} />
+              <Route path="/login" component={Login} />
               <Route
                 path="/specialists"
                 render={props => (
