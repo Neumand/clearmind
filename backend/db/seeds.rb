@@ -4,16 +4,16 @@ puts "---------------"
 puts "Creating users"
 puts "---------------"
 
-30.times do
     User.create({
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        email: Faker::Internet.email,
-        gender: Faker::Gender.binary_type,
-        date_of_birth: Faker::Date.birthday(15, 80),
-        phone_number: Faker::Base.numerify('514-###-####')
+        first_name: "Test",
+        last_name: "McTestington",
+        email: "test@example.com",
+        gender: "Male",
+        date_of_birth: "1990-11-01",
+        phone_number: "514-111-1111",
+        password: "testing",
+        password_confirmation: "testing"
     })
-end
 
 puts "---------------"
 puts "Creating a schedule"
