@@ -26,7 +26,7 @@ class NavBarDropdown extends Component {
           <a className='dropdown-item' href='/specialists'>
             Specialists
           </a>
-          <a className='dropdown-item' href='#'>
+          <a className='dropdown-item' href='/clinics'>
             Clinics
           </a>
         </div>
