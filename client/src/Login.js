@@ -12,7 +12,7 @@ class Login extends Component {
         password,
       },
     };
-    post('/api/v1/authentication', request.json)
+    post('/user_token', request.json)
       .then(res => {
         console.log(res);
         localStorage.setItem('jwt', res.data.jwt);
