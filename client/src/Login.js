@@ -12,10 +12,13 @@ class Login extends Component {
         password,
       },
     };
-    post('/api/v1/authentication', request.json).then(res => {
-      console.log(res);
-      localStorage.setItem('jwt', res.data.jwt);
-    });
+    post('/api/v1/authentication', request.json)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem('jwt', res.data.jwt);
+        this.props.history.push('/');
+      })
+      .catch(err => console.log('Error: ', err));
   };
 
   render() {
