@@ -12,8 +12,8 @@ class Login extends Component {
         password: password
       }
     };
-    axios
-      .post("/api/v1/user_token", request)
+
+    post("/user_token", request.json)
       .then(res => {
         localStorage.setItem("jwt", res.data.jwt);
         this.props.history.push("/");
