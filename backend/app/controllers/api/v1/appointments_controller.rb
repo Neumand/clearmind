@@ -10,7 +10,7 @@ class Api::V1::AppointmentsController < ApplicationController
         appointment.clinic_id = params[:clinic_id]
         appointment.specialist_id = params[:specialist_id]
         appointment.date_time = DateTime.parse(params[:date_time])
-        appointment.end_time = ""
+        appointment.end_time = DateTime.parse(params[:date_time]) + 1.hour
         appointment.session_details = params[:session_details]
         appointment.cancelled = false
         appointment.cancellation_reason = ""
