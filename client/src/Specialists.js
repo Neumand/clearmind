@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Modal, Image, Form } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { setMinutes, setHours, addDays, getHours, getMinutes } from 'date-fns';
+import { setMinutes, setHours, addDays } from 'date-fns';
 import axios from 'axios';
 
 class Specialists extends React.Component {
