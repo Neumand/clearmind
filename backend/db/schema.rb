@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2019_04_27_165715) do
     t.bigint "user_id"
     t.bigint "specialist_id"
     t.bigint "clinic_id"
-    t.date "date"
-    t.time "start_time"
-    t.time "end_time"
+    t.datetime "date_time"
+    t.datetime "end_time"
+    t.string "session_details"
     t.boolean "cancelled"
     t.string "cancellation_reason"
     t.datetime "created_at", null: false

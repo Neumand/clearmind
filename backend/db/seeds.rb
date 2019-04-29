@@ -149,7 +149,9 @@ puts "---------------"
         schedule_id: 1
     })
 
-
+puts "---------------"
+puts "Creating specialists"
+puts "---------------"
 
 
 puts 'Done!'
