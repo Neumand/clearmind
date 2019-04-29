@@ -5,7 +5,7 @@ import Home from "./Home";
 import Specialists from "./Specialists";
 import Resources from "./Resources";
 import Clinics from "./Clinics";
-import Login from './Login';
+import Login from "./Login";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -31,7 +31,6 @@ class App extends Component {
             specialists: specRes.data,
             clinics: clicRes.data
           });
-          console.log(appoRes.data);
         })
       )
       .catch(error => console.log(error));
