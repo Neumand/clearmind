@@ -3,16 +3,17 @@ import { post } from 'axios';
 
 class Login extends Component {
   handleAuth = e => {
-    e.preventDefault;
+    e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const request = {
       auth: {
-        email,
-        password,
+        email: email,
+        password: password,
       },
     };
-    post('/user_token', request.json)
+
+    post('http://localhost:3001/user_token', request)
       .then(res => {
         console.log(res);
         localStorage.setItem('jwt', res.data.jwt);

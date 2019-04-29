@@ -31,7 +31,6 @@ class App extends Component {
             specialists: specRes.data,
             clinics: clicRes.data
           });
-          console.log(appoRes.data);
         })
       )
       .catch(error => console.log(error));
