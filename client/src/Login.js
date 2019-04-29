@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { post } from 'axios';
 
 class Login extends Component {
   handleAuth = e => {
@@ -13,9 +13,11 @@ class Login extends Component {
       },
     };
 
-    post('/user_token', request.json)
+    post('/user_token', request)
       .then(res => {
+        const { id, first_name } = res.data.user;
         localStorage.setItem('jwt', res.data.jwt);
+        this.props.setCurrentUser(id, first_name);
         this.props.history.push('/');
       })
       .catch(err => console.log('Error: ', err));
