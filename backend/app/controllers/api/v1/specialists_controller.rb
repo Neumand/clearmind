@@ -9,6 +9,7 @@ class Api::V1::SpecialistsController < ApplicationController
       object["specialist"] = specialist
       object["clinic"] = specialist.clinic
       object["schedule"] = specialist.schedule
+      object["apt"] = specialist.appointment
       specialist_details << object
     end
 

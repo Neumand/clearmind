@@ -1,15 +1,7 @@
 class Api::V1::AppointmentsController < ApplicationController
 	def index
 		appointments = Appointment.all
-		appointment_info = []
-		
-		appointments.each do |apt|
-			object = {}
-			object['specialist'] = apt.specialist_id
-			object['date_time'] = apt.date_time
-			object['cancelled'] = apt.cancelled
-			appointment_info << object
-		end
+	end
 			
 			render json: appointment_info
 	end
