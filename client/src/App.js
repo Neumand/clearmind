@@ -6,6 +6,7 @@ import Specialists from "./Specialists";
 import Resources from "./Resources";
 import Clinics from "./Clinics";
 import Login from "./Login";
+import Register from "./Register";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -76,6 +77,12 @@ class App extends Component {
                 path="/clinics"
                 render={props => (
                   <Clinics {...props} clinics={this.state.clinics} />
+                )}
+              />
+              <Route
+                path="/register"
+                render={props => (
+                  <Register {...props} currentUser={this.setCurrentUser} />
                 )}
               />
             </div>
