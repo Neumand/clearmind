@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Modal, Image, Form } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { setMinutes, setHours, addDays } from 'date-fns';
+import { setMinutes, setHours, addDays, getHours, getMinutes } from 'date-fns';
 import axios from 'axios';
 
 class Specialists extends React.Component {
@@ -11,8 +11,9 @@ class Specialists extends React.Component {
 
     this.state = {
       activeModal: null,
-      startDate: new Date(),
+      startDate: addDays(new Date(), 1),
       sessionDetails: '',
+      excludedTimes: [],
     };
   }
 
@@ -24,9 +25,10 @@ class Specialists extends React.Component {
     this.setState({ activeModal: specialist });
   };
 
-  handleChange = date => {
+  handleChange = (date, apts) => {
     this.setState({
       startDate: date,
+      excludedTimes: this.specSchedule(apts),
     });
   };
 
@@ -53,6 +55,24 @@ class Specialists extends React.Component {
       .catch(error => console.log(error));
   };
 
+  // Populate exclude times for a given specialist's schedule.
+  specSchedule = aptArr => {
+    if (aptArr === undefined) {
+      return [];
+    }
+    let timesArr = [];
+    for (const booking of aptArr) {
+      let date = new Date(booking.date_time);
+      const stateDate = `${this.state.startDate.toDateString()}`;
+      const selectedDate = `${date.toDateString()}`;
+      let time = setHours(setMinutes(date, getMinutes(date)), getHours(date));
+      if (stateDate === selectedDate) {
+        timesArr.push(time);
+      }
+    }
+    return timesArr;
+  };
+
   render() {
     const specList = this.props.specialists.map(input => {
       return (
@@ -68,7 +88,9 @@ class Specialists extends React.Component {
               </p>
               <Button
                 variant='primary'
-                onClick={e => this.handleShow(e, input.specialist.first_name)}
+                onClick={e => {
+                  this.handleShow(e, input.specialist.first_name);
+                }}
               >
                 Book
               </Button>
@@ -89,13 +111,14 @@ class Specialists extends React.Component {
                   <Form>
                     <DatePicker
                       selected={this.state.startDate}
-                      onChange={this.handleChange}
+                      onChange={date => this.handleChange(date, input.apts)}
                       showTimeSelect
                       filterDate={this.isWeekday}
                       timeIntervals={60}
-                      maxTime={setHours(setMinutes(new Date(), 0), 17)}
+                      maxTime={setHours(setMinutes(new Date(), 0), 16)}
                       minTime={setHours(setMinutes(new Date(), 0), 9)}
                       minDate={addDays(new Date(), 1)}
+                      excludeTimes={this.state.excludedTimes}
                       dateFormat='MMMM d, yyyy h:mm aa'
                       placeholderText='Please choose a date and time'
                     />
@@ -137,6 +160,7 @@ class Specialists extends React.Component {
         </div>
       );
     });
+
     return (
       <div>
         <h1>Our Specialists:</h1>

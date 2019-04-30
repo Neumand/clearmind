@@ -13,7 +13,6 @@ class App extends Component {
     users: [],
     specialists: [],
     clinics: [],
-    appointments: [],
     currentUser: {
       id: null,
       firstName: null
@@ -26,14 +25,13 @@ class App extends Component {
         axios.get("api/v1/users"),
         axios.get("api/v1/specialists"),
         axios.get("api/v1/clinics"),
-        axios.get("api/v1/appointments")
       ])
       .then(
-        axios.spread((usersRes, specRes, clicRes, appoRes) => {
+        axios.spread((usersRes, specRes, clicRes) => {
           this.setState({
             users: usersRes.data,
             specialists: specRes.data,
-            clinics: clicRes.data
+            clinics: clicRes.data,
           });
         })
       )
