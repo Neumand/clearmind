@@ -1,11 +1,7 @@
 class Api::V1::AppointmentsController < ApplicationController
 	def index
-		appointments = Appointment.all
 	end
 			
-			render json: appointment_info
-	end
-
 	def create
 			appointment = Appointment.new
 			appointment.user_id = params[:user_id]
