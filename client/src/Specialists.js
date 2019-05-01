@@ -3,7 +3,7 @@ import { Button, Modal, Image, Form } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { setMinutes, setHours, addDays, getHours, getMinutes } from 'date-fns';
-import axios from 'axios';
+import { post } from 'axios';
 
 class Specialists extends React.Component {
   constructor() {
@@ -13,7 +13,6 @@ class Specialists extends React.Component {
       activeModal: null,
       startDate: addDays(new Date(), 1),
       sessionDetails: '',
-      excludedTimes: [],
     };
   }
 
@@ -25,10 +24,9 @@ class Specialists extends React.Component {
     this.setState({ activeModal: specialist });
   };
 
-  handleChange = (date, apts) => {
+  handleChange = date => {
     this.setState({
       startDate: date,
-      excludedTimes: this.specSchedule(apts),
     });
   };
 
@@ -39,14 +37,13 @@ class Specialists extends React.Component {
 
   // Send booking information to the back-end and close the booking modal.
   submitBooking = (e, clinicId, specialistId) => {
-    axios
-      .post('api/v1/appointments', {
-        user_id: 1,
-        clinic_id: clinicId,
-        specialist_id: specialistId,
-        date_time: this.state.startDate,
-        session_details: this.state.sessionDetails,
-      })
+    post('api/v1/appointments', {
+      user_id: 1,
+      clinic_id: clinicId,
+      specialist_id: specialistId,
+      date_time: this.state.startDate,
+      session_details: this.state.sessionDetails,
+    })
       .then(res => {
         console.log(res.data);
         this.setState({ startDate: new Date(), sessionDetails: '' });
@@ -118,7 +115,7 @@ class Specialists extends React.Component {
                       maxTime={setHours(setMinutes(new Date(), 0), 16)}
                       minTime={setHours(setMinutes(new Date(), 0), 9)}
                       minDate={addDays(new Date(), 1)}
-                      excludeTimes={this.state.excludedTimes}
+                      excludeTimes={this.specSchedule(input.apts)}
                       dateFormat='MMMM d, yyyy h:mm aa'
                       placeholderText='Please choose a date and time'
                     />
