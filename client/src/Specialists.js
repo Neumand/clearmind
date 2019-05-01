@@ -61,8 +61,8 @@ class Specialists extends Component {
         this.setState({
           confirmData: {
             bookedSpec,
-            startTime: date_time,
-            endTime: end_time,
+            startTime: new Date(date_time),
+            endTime: new Date(end_time),
             clinic: clinic.name,
             location: clinic.address,
           },
