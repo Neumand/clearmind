@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBarDropdown from './NavBarDropdown';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 const Navigation = (props) => {
@@ -10,7 +9,7 @@ const Navigation = (props) => {
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='mr-auto'>
           <Nav.Link href='/specialists'>Get Help</Nav.Link>
-          <Nav.Link href='/resourcdse'>Resources</Nav.Link>
+          <Nav.Link href='/resources'>Resources</Nav.Link>
           <NavDropdown title='Our Network' id='collasible-nav-dropdown'>
             <NavDropdown.Item href='/specialists'>
               Specialists
