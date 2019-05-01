@@ -1,14 +1,11 @@
 import React from "react";
-import MapComponent1 from "./Map1";
-import MapComponent2 from "./Map2";
+import MapComponent from "./Map";
 
-const Clinics = ({ clinics }) => {
-  const clinicsList = clinics.map(clinic => {
-    console.log(clinic.longitude);
-    console.log(clinic.latitude);
-    if (clinic.name === "Mindwell") {
+class Clinics extends React.Component {
+  render() {
+    const clinicsList = this.props.clinics.map(clinic => {
       return (
-        <ul>
+        <ul key={clinic.id}>
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">{clinic.name}</h5>
@@ -18,35 +15,30 @@ const Clinics = ({ clinics }) => {
               <p className="card-text">{clinic.address} </p>
               <p className="card-text">{clinic.phone_number} </p>
             </div>
-            <MapComponent1 isMarkerShown />
           </div>
         </ul>
       );
-    }
-    if (clinic.name === "La Maison St. Pierre") {
-      return (
-        <ul>
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">{clinic.name}</h5>
-              <p className="card-text">
-                {clinic.description} <br />
-              </p>
-              <p className="card-text">{clinic.address} </p>
-              <p className="card-text">{clinic.phone_number} </p>
+    });
+
+    return (
+      <div style={{ width: "90%", justifyContent: "center" }}>
+        <div className="card mb-3">
+          <div className="row no-gutters">
+            <div className="col-md-4">
+              <div className="card-body">{clinicsList}</div>
             </div>
-            <MapComponent2 isMarkerShown />
+            <div className="col-md-8">
+              <div className="card">
+                <div className="card-body">
+                  <MapComponent isMarkerShown />
+                </div>
+              </div>
+            </div>
           </div>
-        </ul>
-      );
-    }
-  });
-  return (
-    <div>
-      <h1>Our Clinics:</h1>
-      {clinicsList}
-    </div>
-  );
-};
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Clinics;
