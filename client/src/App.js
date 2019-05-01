@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-import NavBar from "./NavBar";
+import Navigation from "./Navigation";
 import Home from "./Home";
 import Specialists from "./Specialists";
 import Resources from "./Resources";
@@ -55,7 +55,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <NavBar />
+          <Navigation currentUser={this.state.currentUser} />
           <Switch>
             <Fragment>
               <Route path='/' component={Home} exact />
