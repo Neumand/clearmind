@@ -54,7 +54,7 @@ class Login extends Component {
               <h4>Don't have an account?</h4>
             </div>
             <div className="container">
-              <a className="btn btn-primary" href="#" role="button">
+              <a className="btn btn-primary" href="/register" role="button">
                 Sign up
               </a>
             </div>

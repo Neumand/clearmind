@@ -6,6 +6,7 @@ import Specialists from "./Specialists";
 import Resources from "./Resources";
 import Clinics from "./Clinics";
 import Login from "./Login";
+import Logout from "./Logout";
 import Register from "./Register";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -64,6 +65,7 @@ class App extends Component {
                   <Login {...props} currentUser={this.setCurrentUser} />
                 )}
               />
+              <Route path="/logout" component={Logout} />
               <Route
                 path="/specialists"
                 render={props => (
