@@ -37,15 +37,19 @@ class Specialists extends React.Component {
 
   // Send booking information to the back-end and close the booking modal.
   submitBooking = (e, clinicId, specialistId) => {
-    post("api/v1/appointments", {
-      user_id: 1,
-      clinic_id: clinicId,
-      specialist_id: specialistId,
-      date_time: this.state.startDate,
-      session_details: this.state.sessionDetails
-    })
+    let token = "Bearer " + localStorage.getItem("jwt");
+    post(
+      "api/v1/appointments",
+      {
+        user_id: 1,
+        clinic_id: clinicId,
+        specialist_id: specialistId,
+        date_time: this.state.startDate,
+        session_details: this.state.sessionDetails
+      },
+      { headers: { Authorization: token } }
+    )
       .then(res => {
-        console.log(res.data);
         this.setState({ startDate: new Date(), sessionDetails: "" });
         this.handleClose();
       })
