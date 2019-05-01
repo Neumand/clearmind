@@ -6,7 +6,7 @@ class Clinics extends React.Component {
     const clinicsList = this.props.clinics.map(clinic => {
       return (
         <ul key={clinic.id}>
-          <div className="card">
+          <div className="card" id={clinic.name}>
             <div className="card-body">
               <h5 className="card-title">{clinic.name}</h5>
               <p className="card-text">
@@ -30,7 +30,7 @@ class Clinics extends React.Component {
             <div className="col-md-8">
               <div className="card">
                 <div className="card-body">
-                  <MapComponent isMarkerShown />
+                  <MapComponent isMarkerShown clinics={this.props.clinics} />
                 </div>
               </div>
             </div>

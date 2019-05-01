@@ -1,42 +1,48 @@
 import React from "react";
-import { compose, withProps } from "recompose";
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import MapWrapper from "./MapWrapper";
+import { Marker } from "react-google-maps";
 
-const MapComponent = compose(
-  withProps({
-    googleMapURL:
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyDrU7R8DWzFJpIkjjuqVgpcurKSZtiJ9xI",
-    loadingElement: <div style={{ height: `600px` }} />,
-    containerElement: <div style={{ height: `600px` }} />,
-    mapElement: <div style={{ height: `600px` }} />
-  }),
-  withGoogleMap
-)(props => (
-  <GoogleMap defaultZoom={12} defaultCenter={{ lat: 45.5517, lng: -73.5836 }}>
-    {props.isMarkerShown && (
-      <Marker
-        options={{ clickable: true }}
-        onClick={() => {
-          console.log(event.target);
-        }}
-        position={{ lat: 45.611626, lng: -73.5554274 }}
-      />
-    )}
-    {props.isMarkerShown && (
-      <Marker
-        options={{
-          clickable: true,
-          icon: {
-            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-          }
-        }}
-        onClick={() => {
-          console.log("This");
-        }}
-        position={{ lat: 45.5053204, lng: -73.5811828 }}
-      />
-    )}
-  </GoogleMap>
-));
+class MapComponent extends React.Component {
+  onClick = input => {
+    let concern = document.getElementById(input);
+    concern.className = "card border-dark";
+    if (concern.id === "Mindwell") {
+      concern.parentElement.nextSibling.childNodes[0].className = "card";
+    } else {
+      concern.parentElement.previousSibling.childNodes[0].className = "card";
+    }
+  };
+
+  render() {
+    const clinicMarkers = this.props.clinics.map(clinic => {
+      return (
+        <Marker
+          key={clinic.id}
+          myValue={clinic.name}
+          clickable={true}
+          onClick={e => {
+            this.onClick(clinic.name);
+          }}
+          position={{
+            lat: Number(clinic.latitude),
+            lng: Number(clinic.longitude)
+          }}
+        />
+      );
+    });
+    return (
+      <MapWrapper
+        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrU7R8DWzFJpIkjjuqVgpcurKSZtiJ9xI"
+        loadingElement={<div style={{ height: `100%` }} />}
+        containerElement={<div style={{ height: `500px` }} />}
+        mapElement={<div style={{ height: `100%` }} />}
+        defaultZoom={12}
+        defaultCenter={{ lat: 45.560473, lng: -73.5683051 }}
+      >
+        {clinicMarkers}
+      </MapWrapper>
+    );
+  }
+}
 
 export default MapComponent;
