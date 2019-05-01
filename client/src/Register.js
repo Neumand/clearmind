@@ -36,6 +36,8 @@ class Register extends Component {
       .then(res => {
         const { id, first_name } = res.data.user;
         localStorage.setItem("jwt", res.data.jwt);
+        localStorage.setItem("user id", res.data.user.id);
+        localStorage.setItem("user name", res.data.user.first_name);
         this.props.currentUser(id, first_name);
         this.props.history.push("/");
       })
