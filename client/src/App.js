@@ -1,13 +1,14 @@
-import React, { Component, Fragment } from "react";
-import axios from "axios";
-import NavBar from "./NavBar";
-import Home from "./Home";
-import Specialists from "./Specialists";
-import Resources from "./Resources";
-import Clinics from "./Clinics";
-import Login from "./Login";
-import Register from "./Register";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React, { Component, Fragment } from 'react';
+import axios from 'axios';
+import NavBar from './NavBar';
+import Home from './Home';
+import Specialists from './Specialists';
+import Resources from './Resources';
+import Clinics from './Clinics';
+import Login from './Login';
+import Register from './Register';
+import Confirmation from './Confirmation';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 class App extends Component {
   state = {
@@ -16,25 +17,25 @@ class App extends Component {
     clinics: [],
     currentUser: {
       id: null,
-      firstName: null
-    }
+      firstName: null,
+    },
   };
 
   componentDidMount() {
     axios
       .all([
-        axios.get("api/v1/users"),
-        axios.get("api/v1/specialists"),
-        axios.get("api/v1/clinics")
+        axios.get('api/v1/users'),
+        axios.get('api/v1/specialists'),
+        axios.get('api/v1/clinics'),
       ])
       .then(
         axios.spread((usersRes, specRes, clicRes) => {
           this.setState({
             users: usersRes.data,
             specialists: specRes.data,
-            clinics: clicRes.data
+            clinics: clicRes.data,
           });
-        })
+        }),
       )
       .catch(error => console.log(error));
   }
@@ -44,8 +45,8 @@ class App extends Component {
     this.setState({
       currentUser: {
         id,
-        firstName
-      }
+        firstName,
+      },
     });
   };
 
@@ -56,16 +57,16 @@ class App extends Component {
           <NavBar />
           <Switch>
             <Fragment>
-              <Route path="/" component={Home} exact />
-              <Route path="/resources" component={Resources} />
+              <Route path='/' component={Home} exact />
+              <Route path='/resources' component={Resources} />
               <Route
-                path="/login"
+                path='/login'
                 render={props => (
                   <Login {...props} currentUser={this.setCurrentUser} />
                 )}
               />
               <Route
-                path="/specialists"
+                path='/specialists'
                 render={props => (
                   <Specialists
                     {...props}
@@ -74,17 +75,18 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/clinics"
+                path='/clinics'
                 render={props => (
                   <Clinics {...props} clinics={this.state.clinics} />
                 )}
               />
               <Route
-                path="/register"
+                path='/register'
                 render={props => (
                   <Register {...props} currentUser={this.setCurrentUser} />
                 )}
               />
+              <Route path='/confirmation' component={Confirmation} />
             </Fragment>
           </Switch>
         </div>
