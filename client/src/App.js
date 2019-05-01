@@ -86,7 +86,12 @@ class App extends Component {
                   <Register {...props} currentUser={this.setCurrentUser} />
                 )}
               />
-              <Route path='/confirmation' component={Confirmation} />
+              <Route
+                path='/confirmation'
+                render={props => (
+                  <Confirmation {...props} />
+                )}
+              />
             </Fragment>
           </Switch>
         </div>
