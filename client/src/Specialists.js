@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { Button, Modal, Image, Form } from 'react-bootstrap';
+import { Button, Modal, Image, Form, Spinner } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { setMinutes, setHours, addDays, getHours, getMinutes } from 'date-fns';
@@ -15,6 +15,7 @@ class Specialists extends Component {
       startDate: addDays(new Date(), 1),
       sessionDetails: '',
       confirmData: null,
+      confirmButton: 'Confirm',
     };
   }
 
@@ -39,6 +40,13 @@ class Specialists extends Component {
 
   // Send booking information to the back-end and close the booking modal.
   submitBooking = (e, clinic, specialist) => {
+    this.setState({
+      confirmButton: (
+        <Spinner animation='border' variant='light' size='sm' role='status'>
+          <span className='sr-only'>Loading...</span>
+        </Spinner>
+      ),
+    });
     post('api/v1/appointments', {
       user_id: 1,
       clinic_id: clinic.id,
@@ -60,11 +68,12 @@ class Specialists extends Component {
           },
         });
         this.setState({ startDate: new Date(), sessionDetails: '' });
-        this.handleClose();
-        this.props.history.push({
-          pathname: '/confirmation',
-          state: this.state.confirmData,
-        });
+        setTimeout(() => {
+          this.props.history.push({
+            pathname: '/confirmation',
+            state: this.state.confirmData,
+          });
+        }, 2000);
       })
       .catch(error => console.log(error));
   };
@@ -158,7 +167,7 @@ class Specialists extends Component {
                       this.submitBooking(e, input.clinic, input.specialist)
                     }
                   >
-                    Confirm
+                    {this.state.confirmButton}
                   </Button>
                 </Modal.Footer>
               </Modal>
