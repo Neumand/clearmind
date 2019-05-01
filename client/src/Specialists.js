@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { Button, Modal, Image, Form, Spinner } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -47,13 +46,18 @@ class Specialists extends Component {
         </Spinner>
       ),
     });
-    post('api/v1/appointments', {
-      user_id: 1,
-      clinic_id: clinic.id,
-      specialist_id: specialist.id,
-      date_time: this.state.startDate,
-      session_details: this.state.sessionDetails,
-    })
+    let token = 'Bearer ' + localStorage.getItem('jwt');
+    post(
+      'api/v1/appointments',
+      {
+        user_id: 1,
+        clinic_id: clinic.id,
+        specialist_id: specialist.id,
+        date_time: this.state.startDate,
+        session_details: this.state.sessionDetails,
+      },
+      { headers: { Authorization: token } },
+    )
       .then(res => {
         const { date_time, end_time } = res.data;
         const bookedSpec = `${specialist.first_name} ${specialist.last_name}`;
