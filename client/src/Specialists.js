@@ -1,9 +1,9 @@
-import React from 'react';
-import { Button, Modal, Image, Form } from 'react-bootstrap';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { setMinutes, setHours, addDays, getHours, getMinutes } from 'date-fns';
-import { post } from 'axios';
+import React from "react";
+import { Button, Modal, Image, Form } from "react-bootstrap";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { setMinutes, setHours, addDays, getHours, getMinutes } from "date-fns";
+import { post } from "axios";
 
 class Specialists extends React.Component {
   constructor() {
@@ -12,7 +12,7 @@ class Specialists extends React.Component {
     this.state = {
       activeModal: null,
       startDate: addDays(new Date(), 1),
-      sessionDetails: '',
+      sessionDetails: ""
     };
   }
 
@@ -26,7 +26,7 @@ class Specialists extends React.Component {
 
   handleChange = date => {
     this.setState({
-      startDate: date,
+      startDate: date
     });
   };
 
@@ -37,16 +37,16 @@ class Specialists extends React.Component {
 
   // Send booking information to the back-end and close the booking modal.
   submitBooking = (e, clinicId, specialistId) => {
-    post('api/v1/appointments', {
+    post("api/v1/appointments", {
       user_id: 1,
       clinic_id: clinicId,
       specialist_id: specialistId,
       date_time: this.state.startDate,
-      session_details: this.state.sessionDetails,
+      session_details: this.state.sessionDetails
     })
       .then(res => {
         console.log(res.data);
-        this.setState({ startDate: new Date(), sessionDetails: '' });
+        this.setState({ startDate: new Date(), sessionDetails: "" });
         this.handleClose();
       })
       .catch(error => console.log(error));
@@ -73,18 +73,18 @@ class Specialists extends React.Component {
   render() {
     const specList = this.props.specialists.map(input => {
       return (
-        <div className='col-md-4'>
-          <div className='card'>
-            <img src={input.specialist.image} className='card-img-top' alt='' />
-            <div className='card-body'>
-              <h5 className='card-title'>
+        <div key={input.specialist.id} className="col-md-4">
+          <div className="card">
+            <img src={input.specialist.image} className="card-img-top" alt="" />
+            <div className="card-body">
+              <h5 className="card-title">
                 {input.specialist.first_name} {input.specialist.last_name}
               </h5>
-              <p className='card-text'>
+              <p className="card-text">
                 Expertise: {input.specialist.expertise}
               </p>
               <Button
-                variant='primary'
+                variant="primary"
                 onClick={e => {
                   this.handleShow(e, input.specialist.first_name);
                 }}
@@ -100,7 +100,7 @@ class Specialists extends React.Component {
                 <Modal.Header closeButton>
                   <Image src={input.specialist.image} rounded />
                   <Modal.Title>
-                    Booking a session with: {input.specialist.first_name}{' '}
+                    Booking a session with: {input.specialist.first_name}{" "}
                     {input.specialist.last_name}
                   </Modal.Title>
                 </Modal.Header>
@@ -116,15 +116,15 @@ class Specialists extends React.Component {
                       minTime={setHours(setMinutes(new Date(), 0), 9)}
                       minDate={addDays(new Date(), 1)}
                       excludeTimes={this.specSchedule(input.apts)}
-                      dateFormat='MMMM d, yyyy h:mm aa'
-                      placeholderText='Please choose a date and time'
+                      dateFormat="MMMM d, yyyy h:mm aa"
+                      placeholderText="Please choose a date and time"
                     />
                     <Form.Group>
                       <Form.Label>Session Details</Form.Label>
                       <Form.Control
-                        placeholder='Is there anything we should know before the session?'
-                        as='textarea'
-                        rows='3'
+                        placeholder="Is there anything we should know before the session?"
+                        as="textarea"
+                        rows="3"
                         value={this.state.sessionDetails}
                         onChange={this.onDetailsChange}
                       />
@@ -132,16 +132,16 @@ class Specialists extends React.Component {
                   </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button variant='secondary' onClick={this.handleClose}>
+                  <Button variant="secondary" onClick={this.handleClose}>
                     Close
                   </Button>
                   <Button
-                    variant='primary'
+                    variant="primary"
                     onClick={e =>
                       this.submitBooking(
                         e,
                         input.clinic.id,
-                        input.specialist.id,
+                        input.specialist.id
                       )
                     }
                   >
@@ -150,8 +150,8 @@ class Specialists extends React.Component {
                 </Modal.Footer>
               </Modal>
             </div>
-            <div className='card-footer'>
-              <small className='text-muted'>Clinic: {input.clinic.name} </small>
+            <div className="card-footer">
+              <small className="text-muted">Clinic: {input.clinic.name} </small>
             </div>
           </div>
         </div>
@@ -161,9 +161,9 @@ class Specialists extends React.Component {
     return (
       <div>
         <h1>Our Specialists:</h1>
-        <div className='container'>
-          <div className='row'>
-            <div className='card-deck'>{specList}</div>
+        <div className="container">
+          <div className="row">
+            <div className="card-deck">{specList}</div>
           </div>
         </div>
       </div>
