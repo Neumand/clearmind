@@ -1,20 +1,27 @@
-import React from 'react';
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import React from "react";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
-      <Navbar.Brand href='/'>Logo</Navbar.Brand>
-      <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-      <Navbar.Collapse id='responsive-navbar-nav'>
-        <Nav className='mr-auto'>
-          <Nav.Link href='/specialists'>Get Help</Nav.Link>
-          <Nav.Link href='/resources'>Resources</Nav.Link>
-          <NavDropdown title='Our Network' id='collasible-nav-dropdown'>
-            <NavDropdown.Item href='/specialists'>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar.Brand href="/">Logo</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+          <Link to="/specialists" className="nav-link">
+            Get Help
+          </Link>
+          <Link to="/resources" className="nav-link">
+            Resources
+          </Link>
+          <NavDropdown title="Our Network" id="collasible-nav-dropdown">
+            <Link to="/specialists" className="dropdown-item">
               Specialists
-            </NavDropdown.Item>
-            <NavDropdown.Item href='/clinics'>Clinics</NavDropdown.Item>
+            </Link>
+            <Link to="/clinics" className="dropdown-item">
+              Clinics
+            </Link>
             <NavDropdown.Divider />
           </NavDropdown>
         </Nav>
@@ -23,11 +30,15 @@ const Navigation = () => {
             <Navbar.Text>
               Welcome, {localStorage.getItem("user name")}!
             </Navbar.Text>
-            <Nav.Link href="/logout">Logout</Nav.Link>
+            <Link to="/logout" className="nav-link">
+              Logout
+            </Link>
           </Nav>
         ) : (
           <Nav>
-            <Nav.Link href="/login">Login</Nav.Link>
+            <Link to="/login" className="nav-link">
+              Login
+            </Link>
           </Nav>
         )}
       </Navbar.Collapse>

@@ -1,7 +1,5 @@
-require 'twilio-ruby'
-
 class Api::V1::AppointmentsController < ApplicationController
-	before_action :authenticate_user, :except => :index
+	before_action :authenticate_user
 	
 	def index
 	end

@@ -37,8 +37,6 @@ class Register extends Component {
       }
     };
 
-    console.log(request);
-
     post("/api/v1/users", request)
       .then(res => {
         localStorage.setItem("jwt", res.data.jwt);
@@ -48,6 +46,7 @@ class Register extends Component {
         this.props.history.push("/");
       })
       .catch(err => {
+        console.log(err);
         this.setState({
           errorMessage: "Error: Please verify your information."
         });

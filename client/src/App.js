@@ -102,7 +102,7 @@ class App extends Component {
               <Route
                 path="/register"
                 render={props => (
-                  <Register {...props} currentUser={this.setCurrentUser} />
+                  <Register {...props} setCurrentUser={this.setCurrentUser} />
                 )}
               />
               <Route

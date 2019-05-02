@@ -51,7 +51,7 @@ class Specialists extends Component {
     post(
       "api/v1/appointments",
       {
-        user_id: 1,
+        user_id: this.props.currentUser.id,
         clinic_id: clinic.id,
         specialist_id: specialist.id,
         date_time: this.state.startDate,
