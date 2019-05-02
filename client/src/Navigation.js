@@ -9,7 +9,7 @@ const Navigation = props => {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="/specialists">Get Help</Nav.Link>
-          <Nav.Link href="/resourcdse">Resources</Nav.Link>
+          <Nav.Link href="/resources">Resources</Nav.Link>
           <NavDropdown title="Our Network" id="collasible-nav-dropdown">
             <NavDropdown.Item href="/specialists">Specialists</NavDropdown.Item>
             <NavDropdown.Item href="/clinics">Clinics</NavDropdown.Item>

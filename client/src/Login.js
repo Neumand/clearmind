@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { post } from "axios";
 
 class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      errorMessage: ""
+    };
+  }
   handleAuth = e => {
     e.preventDefault();
     const email = document.getElementById("email").value;
@@ -22,7 +28,9 @@ class Login extends Component {
         this.props.currentUser(id, first_name);
         this.props.history.push("/");
       })
-      .catch(err => console.log("Error: ", err));
+      .catch(err => {
+        this.setState({ errorMessage: "Wrong Credentials" });
+      });
   };
 
   render() {
@@ -48,6 +56,7 @@ class Login extends Component {
               className="form-control"
             />
           </div>
+          <div>{this.state.errorMessage}</div>
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
