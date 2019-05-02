@@ -1,7 +1,7 @@
 import React from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
-const Navigation = props => {
+const Navigation = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand href="/">Logo</Navbar.Brand>
@@ -18,7 +18,9 @@ const Navigation = props => {
         </Nav>
         {localStorage.getItem("jwt") ? (
           <Nav>
-            <Navbar.Text>Welcome, {props.currentUser.firstName}!</Navbar.Text>
+            <Navbar.Text>
+              Welcome, {localStorage.getItem("user name")}!
+            </Navbar.Text>
             <Nav.Link href="/logout">Logout</Nav.Link>
           </Nav>
         ) : (

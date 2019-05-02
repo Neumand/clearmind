@@ -65,7 +65,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Navigation currentUser={this.state.currentUser} />
+          <Navigation />
           <Switch>
             <Fragment>
               <Route path="/" component={Home} exact />
