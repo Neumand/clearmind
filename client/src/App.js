@@ -1,15 +1,16 @@
-import React, { Component, Fragment } from "react";
-import axios from "axios";
-import Navigation from "./Navigation";
-import Home from "./Home";
-import Specialists from "./Specialists";
-import Resources from "./Resources";
-import Clinics from "./Clinics";
-import Login from "./Login";
-import Logout from "./Logout";
-import Register from "./Register";
-import Confirmation from "./Confirmation";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React, { Component, Fragment } from 'react';
+import axios from 'axios';
+import Navigation from './Navigation';
+import Home from './Home';
+import Specialists from './Specialists';
+import Resources from './Resources';
+import Clinics from './Clinics';
+import Login from './Login';
+import Logout from './Logout';
+import Register from './Register';
+import Confirmation from './Confirmation';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import css from './App.css';
 
 class App extends Component {
   state = {
@@ -18,26 +19,26 @@ class App extends Component {
     clinics: [],
     currentUser: {
       id: null,
-      firstName: null
-    }
+      firstName: null,
+    },
   };
 
   componentDidMount() {
     this.setCurrentUser();
     axios
       .all([
-        axios.get("api/v1/users"),
-        axios.get("api/v1/specialists"),
-        axios.get("api/v1/clinics")
+        axios.get('api/v1/users'),
+        axios.get('api/v1/specialists'),
+        axios.get('api/v1/clinics'),
       ])
       .then(
         axios.spread((usersRes, specRes, clicRes) => {
           this.setState({
             users: usersRes.data,
             specialists: specRes.data,
-            clinics: clicRes.data
+            clinics: clicRes.data,
           });
-        })
+        }),
       )
       .catch(error => console.log(error));
   }
@@ -46,9 +47,9 @@ class App extends Component {
   setCurrentUser = () => {
     this.setState({
       currentUser: {
-        id: localStorage.getItem("user id"),
-        firstName: localStorage.getItem("user name")
-      }
+        id: localStorage.getItem('user id'),
+        firstName: localStorage.getItem('user name'),
+      },
     });
   };
 
@@ -57,8 +58,8 @@ class App extends Component {
     this.setState({
       currentUser: {
         id: null,
-        firstName: null
-      }
+        firstName: null,
+      },
     });
   };
 

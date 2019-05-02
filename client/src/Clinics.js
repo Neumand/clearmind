@@ -1,5 +1,6 @@
-import React from "react";
-import MapComponent from "./Map";
+import React from 'react';
+import MapComponent from './Map';
+import { Container } from 'react-bootstrap';
 
 class Clinics extends React.Component {
   constructor(props) {
@@ -18,8 +19,8 @@ class Clinics extends React.Component {
           <div
             className={
               this.state.activeCard === clinic.name
-                ? "card border-dark"
-                : "card"
+                ? 'card border-dark'
+                : 'card'
             }
             id={clinic.name}
           >
@@ -37,7 +38,8 @@ class Clinics extends React.Component {
     });
 
     return (
-      <div style={{ width: "90%", justifyContent: "center" }}>
+      <Container>
+        <br />
         <div className="card mb-3">
           <div className="row no-gutters">
             <div className="col-md-4">
@@ -56,7 +58,7 @@ class Clinics extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     );
   }
 }
