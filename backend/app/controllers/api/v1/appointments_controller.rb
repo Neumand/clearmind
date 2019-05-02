@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class Api::V1::AppointmentsController < ApplicationController
 	before_action :authenticate_user, :except => :index
 	
@@ -17,12 +19,29 @@ class Api::V1::AppointmentsController < ApplicationController
 			appointment.save!
 
 			render json: appointment
+			twilio_message(appointment)
 	end
 
 	def update
 			appointment = Appointment.find(params[:id])
 			appointment.cancelled = true
 			render json: appointment
+	end
+
+	private
+
+	def twilio_message(appointment)
+		user_name = appointment.user.first_name
+		specialist = appointment.specialist
+		clinic = appointment.clinic
+		client = Twilio::REST::Client.new ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"]
+		client.messages.create({
+			from: ENV["TWILIO_TRIAL_NUMBER"],
+			to: ENV["TWILIO_RECEIVING_NUMBER"],
+			body: "
+			Dear #{user_name},\nYour upcoming Clearmind session has been confirmed!\nSpecialist: #{specialist.first_name} #{specialist.last_name}\nDate: #{appointment.date_time}\nClinic: #{clinic.name}: #{clinic.address}\nSee you then!
+			"
+		})
 	end
 
 end
