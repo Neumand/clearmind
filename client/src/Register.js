@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { post } from 'axios';
-import { Container } from 'react-bootstrap';
+import { Container, Form, Button, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
   constructor() {
@@ -56,113 +57,92 @@ class Register extends Component {
 
   render() {
     return (
-      <Container>
-        <h1>Register</h1>
+      <Fragment>
+        <Container style={{ 'margin-top': `5REM` }}>
+          <h1>Register</h1>
+          <p>Please fill out all of the below fields</p>
+          <Form onSubmit={this.register}>
+            <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label htmlFor='first_name'>First Name</Form.Label>
+                <Form.Control name='first_name' id='first_name' type='text' />
+              </Form.Group>
 
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <div className="d-flex justify-content-center">
-          <form onSubmit={this.register}>
-            <div className="form-row">
-              <div className="form-group col-md-10">
-                <label htmlFor="first_name">First Name: </label>
-                <input
-                  name="first_name"
-                  id="first_name"
-                  type="text"
-                  className="form-control"
-                />
-              </div>
-              <div className="form-group col-md-10">
-                <label htmlFor="last_name">Last Name: </label>
-                <input
-                  name="last_name"
-                  id="last_name"
-                  type="text"
-                  className="form-control"
-                />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-10">
-                <label htmlFor="gender">Gender: </label>
-                <select name="gender" id="gender" className="form-control">
+              <Form.Group as={Col}>
+                <Form.Label htmlFor='last_name'>Last Name</Form.Label>
+                <Form.Control name='last_name' id='last_name' type='text' />
+              </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label htmlFor='gender'>Gender</Form.Label>
+                <Form.Control as='select' name='gender' id='gender'>
                   <option />
                   <option>Male</option>
                   <option>Female</option>
                   <option>Other</option>
-                </select>
-              </div>
-              <div className="form-group col-md-10">
-                <label htmlFor="date_of_birth">Date of Birth: </label>
-                <input
-                  name="date_of_birth"
-                  id="date_of_birth"
-                  type="date"
-                  placeholder="YYYY-MM-DD"
-                  className="form-control"
+                </Form.Control>
+              </Form.Group>
+
+              <Form.Group as={Col}>
+                <Form.Label htmlFor='date_of_birth'>Date of Birth</Form.Label>
+                <Form.Control
+                  placeholder='YYYY-MM-DD'
+                  type='date'
+                  name='date_of_birth'
+                  id='date_of_birth'
                 />
-              </div>
-              <div className="form-group col-md-10">
-                <label htmlFor="phone_number">Phone Number: </label>
-                <input
-                  name="phone_number"
-                  id="phone_number"
-                  type="tel"
-                  placeholder="123-456-7890"
-                  className="form-control"
+              </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label htmlFor='email'>Email</Form.Label>
+                <Form.Control name='email' id='email' type='email' />
+              </Form.Group>
+
+              <Form.Group as={Col}>
+                <Form.Label htmlFor='phone_number'>Phone Number</Form.Label>
+                <Form.Control
+                  placeholder='123-456-7890'
+                  name='phone_number'
+                  id='phone_number'
+                  type='tel'
                 />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-10">
-                <label htmlFor="email">Email: </label>
-                <input
-                  name="email"
-                  id="email"
-                  type="email"
-                  className="form-control"
+              </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label htmlFor='password'>Password</Form.Label>
+                <Form.Control name='password' id='password' type='password' />
+              </Form.Group>
+
+              <Form.Group as={Col}>
+                <Form.Label htmlFor='password_confirmation'>
+                  Password Confirmation
+                </Form.Label>
+                <Form.Control
+                  name='password_confirmation'
+                  id='password_confirmation'
+                  type='password'
                 />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-10">
-                <label htmlFor="password">Password:</label>
-                <input
-                  name="password"
-                  id="password"
-                  type="password"
-                  className="form-control"
-                />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-10">
-                <label htmlFor="password_confirmation">
-                  Password Confirmation:
-                </label>
-                <input
-                  name="password_confirmation"
-                  id="password_confirmation"
-                  type="password"
-                  className="form-control"
-                />
-              </div>
-            </div>
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
+              </Form.Group>
+            </Form.Row>
+            <Button type='submit'>Submit</Button>
             <div>{this.state.errorMessage}</div>
-          </form>
-        </div>
-      </Container>
+          </Form>
+        </Container>
+        <Container>
+          <Row className='justify-content-center' style={{ marginTop: `2REM` }}>
+            <h4 style={{ marginRight: `0.75REM` }}>Already have an account?</h4>
+            <Link to='/login'>
+              <Button style={{ marginLeft: `0.75REM` }}>Log In</Button>
+            </Link>
+          </Row>
+        </Container>
+      </Fragment>
     );
   }
 }

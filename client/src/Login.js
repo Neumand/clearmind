@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { post } from 'axios';
 import { Container, Form, Button, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
@@ -37,7 +38,7 @@ class Login extends Component {
   render() {
     return (
       <Fragment>
-        <Container style={{'margin-top': `5REM`}}>
+        <Container style={{ 'margin-top': `5REM` }}>
           <h1>Log In</h1>
           <Form onSubmit={this.handleAuth}>
             <Form.Group>
@@ -65,11 +66,13 @@ class Login extends Component {
           </Form>
         </Container>
         <Container>
-          <Row className='justify-content-center' style={{'margin-top': `2REM`}}>
-            <h4 style={{'margin-right': `0.75REM`}}>Don't have an account?</h4>
-            <Button href='/register' style={{'margin-left': `0.75REM`}}>Sign Up</Button>
+          <Row className='justify-content-center' style={{ marginTop: `2REM` }}>
+            <h4 style={{ marginRight: `0.75REM` }}>Don't have an account?</h4>
+            <Link to='/register'>
+              <Button style={{ marginLeft: `0.75REM` }}>Sign Up</Button>
+            </Link>
           </Row>
-        </Container >
+        </Container>
       </Fragment>
     );
   }
