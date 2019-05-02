@@ -1,11 +1,13 @@
-import React from "react";
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="/">Logo</Navbar.Brand>
+      <Link to="/" className="navbar-brand">
+        Logo
+      </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
@@ -25,10 +27,10 @@ const Navigation = () => {
             <NavDropdown.Divider />
           </NavDropdown>
         </Nav>
-        {localStorage.getItem("jwt") ? (
+        {localStorage.getItem('jwt') ? (
           <Nav>
             <Navbar.Text>
-              Welcome, {localStorage.getItem("user name")}!
+              Welcome, {localStorage.getItem('user name')}!
             </Navbar.Text>
             <Link to="/logout" className="nav-link">
               Logout

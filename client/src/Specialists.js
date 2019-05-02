@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { Button, Modal, Image, Form, Spinner } from "react-bootstrap";
-import DatePicker from "react-datepicker";
-import { Link } from "react-router-dom";
-import "react-datepicker/dist/react-datepicker.css";
-import { setMinutes, setHours, addDays, getHours, getMinutes } from "date-fns";
-import { post } from "axios";
+import React, { Component } from 'react';
+import { Button, Modal, Image, Form, Spinner } from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
+import { Link } from 'react-router-dom';
+import 'react-datepicker/dist/react-datepicker.css';
+import { setMinutes, setHours, addDays, getHours, getMinutes } from 'date-fns';
+import { post } from 'axios';
 
 class Specialists extends Component {
   constructor() {
@@ -13,9 +13,9 @@ class Specialists extends Component {
     this.state = {
       activeModal: null,
       startDate: addDays(new Date(), 1),
-      sessionDetails: "",
+      sessionDetails: '',
       confirmData: null,
-      confirmButton: "Confirm"
+      confirmButton: 'Confirm',
     };
   }
 
@@ -29,7 +29,7 @@ class Specialists extends Component {
 
   handleChange = date => {
     this.setState({
-      startDate: date
+      startDate: date,
     });
   };
 
@@ -45,19 +45,19 @@ class Specialists extends Component {
         <Spinner animation="border" variant="light" size="sm" role="status">
           <span className="sr-only">Loading...</span>
         </Spinner>
-      )
+      ),
     });
-    let token = "Bearer " + localStorage.getItem("jwt");
+    let token = 'Bearer ' + localStorage.getItem('jwt');
     post(
-      "api/v1/appointments",
+      'api/v1/appointments',
       {
         user_id: this.props.currentUser.id,
         clinic_id: clinic.id,
         specialist_id: specialist.id,
         date_time: this.state.startDate,
-        session_details: this.state.sessionDetails
+        session_details: this.state.sessionDetails,
       },
-      { headers: { Authorization: token } }
+      { headers: { Authorization: token } },
     )
       .then(res => {
         const { date_time, end_time } = res.data;
@@ -69,14 +69,14 @@ class Specialists extends Component {
             startTime: new Date(date_time),
             endTime: new Date(end_time),
             clinic: clinic.name,
-            location: clinic.address
-          }
+            location: clinic.address,
+          },
         });
-        this.setState({ startDate: new Date(), sessionDetails: "" });
+        this.setState({ startDate: new Date(), sessionDetails: '' });
         setTimeout(() => {
           this.props.history.push({
-            pathname: "/confirmation",
-            state: this.state.confirmData
+            pathname: '/confirmation',
+            state: this.state.confirmData,
           });
         }, 2000);
       })
@@ -131,7 +131,7 @@ class Specialists extends Component {
                 <Modal.Header closeButton>
                   <Image src={input.specialist.image} rounded />
                   <Modal.Title>
-                    Booking a session with: {input.specialist.first_name}{" "}
+                    Booking a session with: {input.specialist.first_name}{' '}
                     {input.specialist.last_name}
                   </Modal.Title>
                 </Modal.Header>
