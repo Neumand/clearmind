@@ -1,18 +1,20 @@
-import React from "react";
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import React from 'react';
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 const Navigation = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="/">Logo</Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="/specialists">Get Help</Nav.Link>
-          <Nav.Link href="/resources">Resources</Nav.Link>
-          <NavDropdown title="Our Network" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="/specialists">Specialists</NavDropdown.Item>
-            <NavDropdown.Item href="/clinics">Clinics</NavDropdown.Item>
+    <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
+      <Navbar.Brand href='/'>Logo</Navbar.Brand>
+      <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+      <Navbar.Collapse id='responsive-navbar-nav'>
+        <Nav className='mr-auto'>
+          <Nav.Link href='/specialists'>Get Help</Nav.Link>
+          <Nav.Link href='/resources'>Resources</Nav.Link>
+          <NavDropdown title='Our Network' id='collasible-nav-dropdown'>
+            <NavDropdown.Item href='/specialists'>
+              Specialists
+            </NavDropdown.Item>
+            <NavDropdown.Item href='/clinics'>Clinics</NavDropdown.Item>
             <NavDropdown.Divider />
           </NavDropdown>
         </Nav>
