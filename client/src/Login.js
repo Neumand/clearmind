@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { post } from 'axios';
-import { Container } from 'react-bootstrap';
+import { Container, Form, Button, Col, Row } from 'react-bootstrap';
 
 class Login extends Component {
   constructor() {
@@ -36,44 +36,41 @@ class Login extends Component {
 
   render() {
     return (
-      <Container>
-        <h1>Log In</h1>
-        <div className="d-flex justify-content-center">
-          <form onSubmit={this.handleAuth}>
-            <div className="form-group col-md">
-              <label htmlFor="email">Email: </label>
+      <Fragment>
+        <Container style={{'margin-top': `5REM`}}>
+          <h1>Log In</h1>
+          <Form onSubmit={this.handleAuth}>
+            <Form.Group>
+              <label htmlFor='email'>Email: </label>
               <input
-                name="email"
-                id="email"
-                type="email"
-                className="form-control"
+                name='email'
+                id='email'
+                type='email'
+                className='form-control'
               />
-            </div>
-            <div className="form-group col-md">
-              <label htmlFor="password">Password:</label>
+            </Form.Group>
+            <Form.Group>
+              <label htmlFor='password'>Password: </label>
               <input
-                name="password"
-                id="password"
-                type="password"
-                className="form-control"
+                name='password'
+                id='password'
+                type='password'
+                className='form-control'
               />
-            </div>
+            </Form.Group>
             <div>{this.state.errorMessage}</div>
-            <button type="submit" className="btn btn-primary">
+            <Button variant='primary' type='submit'>
               Submit
-            </button>
-
-            <div className="container">
-              <h4>Don't have an account?</h4>
-            </div>
-            <div className="container">
-              <a className="btn btn-primary" href="/register" role="button">
-                Sign up
-              </a>
-            </div>
-          </form>
-        </div>
-      </Container>
+            </Button>
+          </Form>
+        </Container>
+        <Container>
+          <Row className='justify-content-center' style={{'margin-top': `2REM`}}>
+            <h4 style={{'margin-right': `0.75REM`}}>Don't have an account?</h4>
+            <Button href='/register' style={{'margin-left': `0.75REM`}}>Sign Up</Button>
+          </Row>
+        </Container >
+      </Fragment>
     );
   }
 }
