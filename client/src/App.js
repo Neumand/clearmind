@@ -23,6 +23,7 @@ class App extends Component {
   };
 
   componentDidMount() {
+    this.setCurrentUser();
     axios
       .all([
         axios.get("api/v1/users"),
@@ -42,7 +43,7 @@ class App extends Component {
   }
 
   // Set the current user at login
-  setCurrentUser = (id, firstName) => {
+  setCurrentUser = () => {
     this.setState({
       currentUser: {
         id: localStorage.getItem("user id"),
