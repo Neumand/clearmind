@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { post } from "axios";
 
 class Register extends Component {
+  constructor() {
+    super();
+    this.state = {
+      errorMessage: ""
+    };
+  }
+
   register = e => {
     e.preventDefault();
     const first_name = document.getElementById("first_name").value;
@@ -34,12 +41,17 @@ class Register extends Component {
 
     post("/api/v1/users", request)
       .then(res => {
-        const { id, first_name } = res.data.user;
         localStorage.setItem("jwt", res.data.jwt);
-        this.props.currentUser(id, first_name);
+        localStorage.setItem("user id", res.data.user.id);
+        localStorage.setItem("user name", res.data.user.first_name);
+        this.props.setCurrentUser();
         this.props.history.push("/");
       })
-      .catch(err => console.log("Error: ", err));
+      .catch(err => {
+        this.setState({
+          errorMessage: "Error: Please verify your information."
+        });
+      });
   };
 
   render() {
@@ -126,6 +138,7 @@ class Register extends Component {
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
+          <div>{this.state.errorMessage}</div>
         </form>
       </div>
     );

@@ -8,7 +8,7 @@ import Clinics from "./Clinics";
 import Login from "./Login";
 import Logout from "./Logout";
 import Register from "./Register";
-import Confirmation from './Confirmation';
+import Confirmation from "./Confirmation";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -18,36 +18,47 @@ class App extends Component {
     clinics: [],
     currentUser: {
       id: null,
-      firstName: null,
-    },
+      firstName: null
+    }
   };
 
   componentDidMount() {
+    this.setCurrentUser();
     axios
       .all([
-        axios.get('api/v1/users'),
-        axios.get('api/v1/specialists'),
-        axios.get('api/v1/clinics'),
+        axios.get("api/v1/users"),
+        axios.get("api/v1/specialists"),
+        axios.get("api/v1/clinics")
       ])
       .then(
         axios.spread((usersRes, specRes, clicRes) => {
           this.setState({
             users: usersRes.data,
             specialists: specRes.data,
-            clinics: clicRes.data,
+            clinics: clicRes.data
           });
-        }),
+        })
       )
       .catch(error => console.log(error));
   }
 
-  // Set the currently loggied in user into the state.
-  setCurrentUser = (id, firstName) => {
+  // Set the current user at login
+  setCurrentUser = () => {
     this.setState({
       currentUser: {
-        id,
-        firstName,
-      },
+        id: localStorage.getItem("user id"),
+        firstName: localStorage.getItem("user name")
+      }
+    });
+  };
+
+  // Reset the current user at logout
+  resetCurrentUser = () => {
+    this.setState({
+      currentUser: {
+        id: null,
+        firstName: null
+      }
     });
   };
 
@@ -55,44 +66,48 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Navigation currentUser={this.state.currentUser} />
+          <Navigation />
           <Switch>
             <Fragment>
-              <Route path='/' component={Home} exact />
-              <Route path='/resources' component={Resources} />
+              <Route path="/" component={Home} exact />
+              <Route path="/resources" component={Resources} />
               <Route
-                path='/login'
+                path="/login"
                 render={props => (
                   <Login {...props} currentUser={this.setCurrentUser} />
                 )}
               />
-              <Route path="/logout" component={Logout} />
               <Route
-                path='/specialists'
+                path="/logout"
+                render={props => (
+                  <Logout {...props} resetUser={this.resetCurrentUser} />
+                )}
+              />
+              <Route
+                path="/specialists"
                 render={props => (
                   <Specialists
                     {...props}
                     specialists={this.state.specialists}
+                    currentUser={this.state.currentUser}
                   />
                 )}
               />
               <Route
-                path='/clinics'
+                path="/clinics"
                 render={props => (
                   <Clinics {...props} clinics={this.state.clinics} />
                 )}
               />
               <Route
-                path='/register'
+                path="/register"
                 render={props => (
                   <Register {...props} currentUser={this.setCurrentUser} />
                 )}
               />
               <Route
-                path='/confirmation'
-                render={props => (
-                  <Confirmation {...props} />
-                )}
+                path="/confirmation"
+                render={props => <Confirmation {...props} />}
               />
             </Fragment>
           </Switch>
