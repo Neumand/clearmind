@@ -17,8 +17,8 @@ class App extends Component {
     specialists: [],
     clinics: [],
     currentUser: {
-      id: localStorage.getItem("user id") || null,
-      firstName: localStorage.getItem("user name") || null
+      id: null,
+      firstName: null
     }
   };
 
@@ -41,12 +41,22 @@ class App extends Component {
       .catch(error => console.log(error));
   }
 
-  // Set the currently loggied in user into the state.
+  // Set the current user at login
   setCurrentUser = (id, firstName) => {
     this.setState({
       currentUser: {
-        id,
-        firstName
+        id: localStorage.getItem("user id"),
+        firstName: localStorage.getItem("user name")
+      }
+    });
+  };
+
+  // Reset the current user at logout
+  resetCurrentUser = () => {
+    this.setState({
+      currentUser: {
+        id: null,
+        firstName: null
       }
     });
   };
@@ -66,7 +76,12 @@ class App extends Component {
                   <Login {...props} currentUser={this.setCurrentUser} />
                 )}
               />
-              <Route path="/logout" component={Logout} />
+              <Route
+                path="/logout"
+                render={props => (
+                  <Logout {...props} resetUser={this.resetCurrentUser} />
+                )}
+              />
               <Route
                 path="/specialists"
                 render={props => (
