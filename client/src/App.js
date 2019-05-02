@@ -88,6 +88,7 @@ class App extends Component {
                   <Specialists
                     {...props}
                     specialists={this.state.specialists}
+                    currentUser={this.state.currentUser}
                   />
                 )}
               />
