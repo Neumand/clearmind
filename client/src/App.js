@@ -10,6 +10,7 @@ import Logout from './Logout';
 import Register from './Register';
 import Confirmation from './Confirmation';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Profile from './Profile';
 import css from './App.css';
 
 class App extends Component {
@@ -73,27 +74,27 @@ class App extends Component {
           <Navigation />
           <Switch>
             <Fragment>
-              <Route path='/' component={Home} exact />
+              <Route path="/" component={Home} exact />
               <Route
-                path='/resources'
+                path="/resources"
                 render={props => (
                   <Resources {...props} articles={this.state.articles} />
                 )}
               />
               <Route
-                path='/login'
+                path="/login"
                 render={props => (
                   <Login {...props} currentUser={this.setCurrentUser} />
                 )}
               />
               <Route
-                path='/logout'
+                path="/logout"
                 render={props => (
                   <Logout {...props} resetUser={this.resetCurrentUser} />
                 )}
               />
               <Route
-                path='/specialists'
+                path="/specialists"
                 render={props => (
                   <Specialists
                     {...props}
@@ -103,21 +104,22 @@ class App extends Component {
                 )}
               />
               <Route
-                path='/clinics'
+                path="/clinics"
                 render={props => (
                   <Clinics {...props} clinics={this.state.clinics} />
                 )}
               />
               <Route
-                path='/register'
+                path="/register"
                 render={props => (
                   <Register {...props} setCurrentUser={this.setCurrentUser} />
                 )}
               />
               <Route
-                path='/confirmation'
+                path="/confirmation"
                 render={props => <Confirmation {...props} />}
               />
+              <Route path="/profile" component={Profile} />
             </Fragment>
           </Switch>
         </div>
