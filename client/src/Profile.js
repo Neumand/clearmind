@@ -1,12 +1,29 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Container, Button } from 'react-bootstrap';
+import { Table, Container, Button, Modal, Form } from 'react-bootstrap';
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { appointments: [], loaded: false };
+    this.state = {
+      appointments: [],
+      loaded: false,
+      activeModal: null,
+      cancellationReason: '',
+    };
   }
+
+  handleClose = () => {
+    this.setState({ activeModal: null });
+  };
+
+  handleShow = (e, appointment) => {
+    this.setState({ activeModal: appointment });
+  };
+
+  onReasonChange = e => {
+    this.setState({ cancellationReason: e.target.value });
+  };
 
   componentDidMount() {
     let token = 'Bearer ' + localStorage.getItem('jwt');
@@ -34,7 +51,50 @@ class Profile extends React.Component {
               <td>Cancelled</td>
             ) : new Date(apt.details.date_time) >= Date.now() ? (
               <td>
-                <Button>Cancel</Button>
+                <Button
+                  onClick={e => {
+                    this.handleShow(e, apt.details.id);
+                  }}
+                >
+                  Cancel
+                </Button>
+
+                <Modal
+                  id={apt.details.id}
+                  show={this.state.activeModal === apt.details.id}
+                  onHide={this.handleClose}
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>Your Appointment</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <Form>
+                      <Form.Group>
+                        <Form.Label>
+                          May we ask why you are cancelling your appointment on{' '}
+                          {new Date(apt.details.date_time).toDateString()} at{' '}
+                          {new Date(apt.details.date_time).toLocaleTimeString(
+                            'en-CA',
+                          )}
+                          ?
+                        </Form.Label>
+                        <Form.Control
+                          placeholder="Cancellation Reason"
+                          as="textarea"
+                          rows="3"
+                          value={this.state.sessionDetails}
+                          onChange={this.onReasonChange}
+                        />
+                      </Form.Group>
+                    </Form>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={this.handleClose}>
+                      Close
+                    </Button>
+                    <Button variant="primary">Submit</Button>
+                  </Modal.Footer>
+                </Modal>
               </td>
             ) : (
               <td> Past </td>
