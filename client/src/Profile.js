@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { Table, Container, Button, Modal, Form } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarTimes } from '@fortawesome/free-solid-svg-icons';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -23,6 +25,19 @@ class Profile extends React.Component {
 
   onReasonChange = e => {
     this.setState({ cancellationReason: e.target.value });
+  };
+
+  cancelBooking = (e, appointment) => {
+    let token = 'Bearer ' + localStorage.getItem('jwt');
+    let url = 'api/v1/appointments/' + appointment.id;
+    let reason = this.state.cancellationReason;
+    axios
+      .put(url, { reason: reason }, { headers: { Authorization: token } })
+      .then(res => {
+        this.handleClose();
+        appointment.cancelled = true;
+      })
+      .catch(err => console.log(err));
   };
 
   componentDidMount() {
@@ -48,7 +63,7 @@ class Profile extends React.Component {
             <td>{apt.clinic}</td>
             <td>{apt.specialist}</td>
             {apt.details.cancelled ? (
-              <td>Cancelled</td>
+              <td style={{ color: `red` }}>Cancelled</td>
             ) : new Date(apt.details.date_time) >= Date.now() ? (
               <td>
                 <Button
@@ -56,7 +71,7 @@ class Profile extends React.Component {
                     this.handleShow(e, apt.details.id);
                   }}
                 >
-                  Cancel
+                  <FontAwesomeIcon icon={faCalendarTimes} />
                 </Button>
 
                 <Modal
@@ -92,12 +107,19 @@ class Profile extends React.Component {
                     <Button variant="secondary" onClick={this.handleClose}>
                       Close
                     </Button>
-                    <Button variant="primary">Submit</Button>
+                    <Button
+                      variant="primary"
+                      onClick={e => {
+                        this.cancelBooking(e, apt.details);
+                      }}
+                    >
+                      Submit
+                    </Button>
                   </Modal.Footer>
                 </Modal>
               </td>
             ) : (
-              <td> Past </td>
+              <td style={{ fontStyle: `italic` }}> Past </td>
             )}
           </tr>
         );
@@ -107,7 +129,7 @@ class Profile extends React.Component {
       <Container style={{ marginTop: `5REM` }}>
         <h1 style={{ paddingBottom: `2 rem` }}>Your appointments</h1>
         <Table borderless responsive="sm">
-          <thead>
+          <thead style={{ borderBottom: `1px solid black` }}>
             <tr>
               <th>Date</th>
               <th>Time</th>
