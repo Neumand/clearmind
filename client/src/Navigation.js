@@ -30,7 +30,8 @@ const Navigation = () => {
         {localStorage.getItem('jwt') ? (
           <Nav>
             <Navbar.Text>
-              Welcome, {localStorage.getItem('user name')}!
+              Welcome,{' '}
+              <Link to="/profile">{localStorage.getItem('user name')}</Link>!
             </Navbar.Text>
             <Link to="/logout" className="nav-link">
               Logout
