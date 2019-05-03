@@ -213,8 +213,8 @@ puts "---------------"
         user_id:1, 
         specialist_id:5, 
         clinic_id:2, 
-        date_time: "2019-05-05 11:00:00", 
-        end_time: "2019-05-05 12:00:00", 
+        date_time: "2019-05-17 11:00:00", 
+        end_time: "2019-05-17 12:00:00", 
         session_details: "", 
         cancelled: false, 
         cancellation_reason: ""})
@@ -224,10 +224,10 @@ puts "---------------"
         user_id:1, 
         specialist_id:5, 
         clinic_id:2, 
-        date_time: "2019-05-12 10:00:00", 
-        end_time: "2019-05-12 11:00:00", 
+        date_time: "2019-05-24 10:00:00", 
+        end_time: "2019-05-24 11:00:00", 
         session_details: "", 
-        cancelled: true, 
+        cancelled: false, 
         cancellation_reason: ""})
     
 
