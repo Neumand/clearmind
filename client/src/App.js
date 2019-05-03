@@ -17,6 +17,7 @@ class App extends Component {
     users: [],
     specialists: [],
     clinics: [],
+    articles: [],
     currentUser: {
       id: null,
       firstName: null,
@@ -30,13 +31,15 @@ class App extends Component {
         axios.get('api/v1/users'),
         axios.get('api/v1/specialists'),
         axios.get('api/v1/clinics'),
+        axios.get('api/v1/articles'),
       ])
       .then(
-        axios.spread((usersRes, specRes, clicRes) => {
+        axios.spread((usersRes, specRes, clicRes, articleRes) => {
           this.setState({
             users: usersRes.data,
             specialists: specRes.data,
             clinics: clicRes.data,
+            articles: articleRes.data,
           });
         }),
       )
@@ -70,22 +73,27 @@ class App extends Component {
           <Navigation />
           <Switch>
             <Fragment>
-              <Route path="/" component={Home} exact />
-              <Route path="/resources" component={Resources} />
+              <Route path='/' component={Home} exact />
               <Route
-                path="/login"
+                path='/resources'
+                render={props => (
+                  <Resources {...props} articles={this.state.articles} />
+                )}
+              />
+              <Route
+                path='/login'
                 render={props => (
                   <Login {...props} currentUser={this.setCurrentUser} />
                 )}
               />
               <Route
-                path="/logout"
+                path='/logout'
                 render={props => (
                   <Logout {...props} resetUser={this.resetCurrentUser} />
                 )}
               />
               <Route
-                path="/specialists"
+                path='/specialists'
                 render={props => (
                   <Specialists
                     {...props}
@@ -95,19 +103,19 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/clinics"
+                path='/clinics'
                 render={props => (
                   <Clinics {...props} clinics={this.state.clinics} />
                 )}
               />
               <Route
-                path="/register"
+                path='/register'
                 render={props => (
                   <Register {...props} setCurrentUser={this.setCurrentUser} />
                 )}
               />
               <Route
-                path="/confirmation"
+                path='/confirmation'
                 render={props => <Confirmation {...props} />}
               />
             </Fragment>
