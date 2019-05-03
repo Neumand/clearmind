@@ -150,8 +150,39 @@ puts "---------------"
     })
 
 puts "---------------"
-puts "Creating specialists"
+puts "Creating articles"
 puts "---------------"
 
+    Article.create({
+        title: 'My name is Wil Wheaton. I Live With Chronic Depression and Generalized Anxiety. I Am Not Ashamed.',
+        description: 'Wil Wheaton shares his battle with and triumph over mental ilness',
+        thumbnail: 'https://cdn-images-1.medium.com/max/1000/1*4eoDVHG9Bs23Xl_2Qt1Leg.jpeg',
+        url: 'https://medium.com/@wilw/my-name-is-wil-wheaton-i-live-with-chronic-depression-and-generalized-anxiety-i-am-not-ashamed-8f693f9c0af1',
+        category: 'Stories'
+    })
+
+    Article.create({
+        title: 'The Role of Friends and Family',
+        description: 'How you can help a love one dealing with mental illness',
+        thumbnail: 'https://image.freepik.com/free-vector/big-happy-family-with-flat-design_23-2147834657.jpg',
+        url: 'https://amiquebec.org/the-role-of-friends-and-family/',
+        category: 'Support'
+    })
+
+    Article.create({
+        title: 'Supporting a Friend or Family Member with a Mental Illness',
+        description: 'Like any other health problem, someone with a mental illness needs extra love and support. You may not be able to see the illness, but it doesn’t mean that you’re powerless to help.',
+        thumbnail: 'https://image.freepik.com/free-vector/helping-hand-support-background-flat-style_23-2147796082.jpg',
+        url: 'https://www.heretohelp.bc.ca/factsheet/supporting-a-friend-or-family-member-with-a-mental-illness',
+        category: 'Support'
+    })
+
+    Article.create({
+        title: 'Mental Illnesses',
+        description: 'Description of the various types of mental illness',
+        thumbnail: 'https://image.freepik.com/free-vector/people-connecting-jigsaw-pieces-head-together_53876-64617.jpg',
+        url: 'https://amiquebec.org/mental-illnesses/',
+        category: 'Information'
+    })
 
 puts 'Done!'
