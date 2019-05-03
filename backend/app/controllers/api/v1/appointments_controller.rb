@@ -23,6 +23,8 @@ class Api::V1::AppointmentsController < ApplicationController
 	def update
 			appointment = Appointment.find(params[:id])
 			appointment.cancelled = true
+			appointment.cancellation_reason = params[:reason]
+			appointment.save!
 			render json: appointment
 	end
 

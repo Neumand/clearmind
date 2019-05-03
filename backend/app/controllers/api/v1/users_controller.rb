@@ -1,9 +1,24 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token, raise: false
+  before_action :authenticate_user, :only => :show
 
   def index
     users = User.all
     render json: users
+  end
+
+  def show
+    user_appointments = User.find(params[:id]).appointments
+    prepArray = []
+
+    user_appointments.each do |appointment| 
+      appointment_obj = {}
+      appointment_obj["details"] = appointment
+      appointment_obj["specialist"] = "#{Specialist.find(appointment.specialist_id).first_name} #{Specialist.find(appointment.specialist_id).last_name}"
+      appointment_obj["clinic"] = Clinic.find(appointment.clinic_id).name
+      prepArray << appointment_obj
+    end
+
+    render json: prepArray
   end
 
   def create
