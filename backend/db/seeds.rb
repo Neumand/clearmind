@@ -185,4 +185,51 @@ puts "---------------"
         category: 'Information'
     })
 
+puts "---------------"
+puts "Creating appointments"
+puts "---------------"
+
+    Appointment.create({
+        user_id:1, 
+        specialist_id:1, 
+        clinic_id:1, 
+        date_time: "2019-04-23 10:00:00", 
+        end_time: "2019-04-23 11:00:00", 
+        session_details: "", 
+        cancelled: false, 
+        cancellation_reason: ""})
+
+    Appointment.create({
+        user_id:1, 
+        specialist_id:1, 
+        clinic_id:1, 
+        date_time: "2019-04-30 10:00:00", 
+        end_time: "2019-04-30 11:00:00", 
+        session_details: "", 
+        cancelled: true, 
+        cancellation_reason: "I am sick."})
+
+    Appointment.create({
+        user_id:1, 
+        specialist_id:5, 
+        clinic_id:2, 
+        date_time: "2019-05-05 11:00:00", 
+        end_time: "2019-05-05 12:00:00", 
+        session_details: "", 
+        cancelled: false, 
+        cancellation_reason: ""})
+
+
+    Appointment.create({
+        user_id:1, 
+        specialist_id:5, 
+        clinic_id:2, 
+        date_time: "2019-05-12 10:00:00", 
+        end_time: "2019-05-12 11:00:00", 
+        session_details: "", 
+        cancelled: true, 
+        cancellation_reason: ""})
+    
+
+
 puts 'Done!'

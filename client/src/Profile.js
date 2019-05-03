@@ -23,7 +23,7 @@ class Profile extends React.Component {
     if (this.state.loaded) {
       outputArray = this.state.appointments.map(apt => {
         return (
-          <tr key={apt.details.id}>
+          <tr key={apt.details.id} style={{ minHeight: `3 rem` }}>
             <td>{new Date(apt.details.date_time).toDateString()}</td>
             <td>
               {new Date(apt.details.date_time).toLocaleTimeString('en-CA')}
@@ -32,10 +32,12 @@ class Profile extends React.Component {
             <td>{apt.specialist}</td>
             {apt.details.cancelled ? (
               <td>Cancelled</td>
-            ) : (
+            ) : new Date(apt.details.date_time) >= Date.now() ? (
               <td>
                 <Button>Cancel</Button>
               </td>
+            ) : (
+              <td> Past </td>
             )}
           </tr>
         );
@@ -43,7 +45,8 @@ class Profile extends React.Component {
     }
     return (
       <Container style={{ marginTop: `5REM` }}>
-        <Table>
+        <h1 style={{ paddingBottom: `2 rem` }}>Your appointments</h1>
+        <Table borderless responsive="sm">
           <thead>
             <tr>
               <th>Date</th>
