@@ -1,22 +1,34 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Media, Row } from 'react-bootstrap';
 
-class Resources extends React.Component {
-  render() {
+const Resources = ({ articles }) => {
+  const articleList = articles.map(article => {
     return (
-      <Container>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </Container>
+      <div key={article.id}>
+        <a href={article.url} target='_blank' style={{textDecoration: 'none', color: '#212529'}}>
+          <Media style={{border: `1px solid rgba(0,0,0,.125)`,borderRadius: `.25rem`}}>
+            <img
+              width={64}
+              height={64}
+              className='mr-3'
+              src={article.thumbnail}
+              alt={article.description}
+            />
+            <Media.Body>
+              <h5>{article.title}</h5>
+              <p>{article.description}</p>
+            </Media.Body>
+          </Media>
+        </a>
+      </div>
     );
-  }
-}
+  });
+
+  return (
+    <Container style={{ marginTop: '3rem' }}>
+      <Row>{articleList}</Row>
+    </Container>
+  );
+};
 
 export default Resources;
