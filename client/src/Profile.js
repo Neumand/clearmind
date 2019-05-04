@@ -35,7 +35,6 @@ class Profile extends React.Component {
       .put(url, { reason: reason }, { headers: { Authorization: token } })
       .then(res => {
         this.handleClose();
-        appointment.cancelled = true;
       })
       .catch(err => console.log(err));
   };
@@ -111,6 +110,7 @@ class Profile extends React.Component {
                       variant="primary"
                       onClick={e => {
                         this.cancelBooking(e, apt.details);
+                        apt.details.cancelled = true;
                       }}
                     >
                       Submit
