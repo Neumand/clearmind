@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_05_02_220157) do
   create_table "clinics", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.string "description"
     t.string "latitude"
     t.string "longitude"

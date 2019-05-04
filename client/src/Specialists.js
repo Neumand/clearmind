@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
-import { Button, Modal, Image, Form, Spinner } from 'react-bootstrap';
+import {
+  Button,
+  Modal,
+  Image,
+  Form,
+  Spinner,
+  Container,
+  Card,
+  CardDeck,
+  Col,
+  Row,
+} from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { Link } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import { setMinutes, setHours, addDays, getHours, getMinutes } from 'date-fns';
 import { post } from 'axios';
+import './Specialists.css';
 
 class Specialists extends Component {
   constructor() {
@@ -104,16 +116,16 @@ class Specialists extends Component {
   render() {
     const specList = this.props.specialists.map(input => {
       return (
-        <div key={input.specialist.id} className="col-md-4">
-          <div className="card">
-            <img src={input.specialist.image} className="card-img-top" alt="" />
-            <div className="card-body">
-              <h5 className="card-title">
-                {input.specialist.first_name} {input.specialist.last_name}
-              </h5>
-              <p className="card-text">
-                Expertise: {input.specialist.expertise}
-              </p>
+        <Col md={4}>
+          <Card className="card-margin">
+            <Card.Img variant="top" src={input.specialist.image} />
+            <Card.Body>
+              <Card.Title>
+                <h5>
+                  {input.specialist.first_name} {input.specialist.last_name}
+                </h5>
+              </Card.Title>
+              <Card.Text>Expertise: {input.specialist.expertise}</Card.Text>
               <Button
                 variant="primary"
                 onClick={e => {
@@ -189,24 +201,22 @@ class Specialists extends Component {
                   )}
                 </Modal.Footer>
               </Modal>
-            </div>
-            <div className="card-footer">
+            </Card.Body>
+            <Card.Footer>
               <small className="text-muted">Clinic: {input.clinic.name} </small>
-            </div>
-          </div>
-        </div>
+            </Card.Footer>
+          </Card>
+        </Col>
       );
     });
 
     return (
-      <div>
-        <h1>Our Specialists:</h1>
-        <div className="container">
-          <div className="row">
-            <div className="card-deck">{specList}</div>
-          </div>
-        </div>
-      </div>
+      <Container className="margin-top">
+        <h1>Our specialists</h1>
+        <Row>
+          <CardDeck>{specList}</CardDeck>
+        </Row>
+      </Container>
     );
   }
 }
