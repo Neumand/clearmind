@@ -185,6 +185,30 @@ puts "---------------"
         category: 'Information'
     })
 
+    Article.create({
+        title: 'The Truth of the Streets',
+        description: 'And my life thereafter ...',
+        thumbnail: 'https://www.heretohelp.bc.ca/sites/default/files/the-truth-of-the-streets.jpg',
+        url: 'https://www.heretohelp.bc.ca/visions/housing-and-homelessness-vol4/the-truth-of-the-streets',
+        category: 'Stories'
+    })
+
+    Article.create({
+        title: 'My Mental Health Toolbelt',
+        description: 'Many programmers and other people in technology have shared their mental health struggles online.',
+        thumbnail: 'https://cdn-images-1.medium.com/max/1000/1*aIRUqrZKPs-Uw-mJuq4QEw.png',
+        url: 'https://medium.com/@taylorotwell/my-mental-health-toolbelt-9b9fdd4ae149',
+        category: 'Stories'
+    })
+
+    Article.create({
+        title: 'Fast Facts about Mental Illness',
+        description: 'CMHA summarises some key information about mental illness',
+        thumbnail: 'https://image.flaticon.com/icons/svg/1207/1207818.svg',
+        url: 'https://cmha.ca/about-cmha/fast-facts-about-mental-illness',
+        category: 'Information'
+    })
+
 puts "---------------"
 puts "Creating appointments"
 puts "---------------"
