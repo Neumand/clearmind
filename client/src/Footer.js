@@ -9,7 +9,7 @@ class Footer extends Component {
     super();
 
     this.state = {
-      display: 'show',
+      display: 'none',
     };
   }
 
@@ -21,7 +21,7 @@ class Footer extends Component {
 
   render() {
     return (
-      <Navbar fixed='bottom'>
+      <Navbar fixed='bottom' style={{justifyContent: `flex-end`}}>
         <Button
           variant='light'
           onClick={this.handleDisplay}

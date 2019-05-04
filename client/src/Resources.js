@@ -1,5 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import { Container, Card, Row, Col, Form } from 'react-bootstrap';
+import {
+  Container,
+  Card,
+  Row,
+  Col,
+  Form,
+  CardColumns,
+  Image,
+} from 'react-bootstrap';
 
 class Resources extends Component {
   constructor() {
@@ -22,7 +30,7 @@ class Resources extends Component {
     const articleList = this.props.articles.map(article => {
       if (this.state.category.includes(article.category)) {
         return (
-          <Col xs={6} md={4}>
+          <Col>
             <div key={article.id}>
               <a
                 href={article.url}
@@ -37,7 +45,7 @@ class Resources extends Component {
                   }}
                 >
                   <Card.Header>
-                    <h3>{article.title}</h3>
+                    <h5>{article.title}</h5>
                   </Card.Header>
                   <Card.Img variant='top' src={article.thumbnail} />
                   <Card.Body>
@@ -55,28 +63,51 @@ class Resources extends Component {
 
     return (
       <Fragment>
-        <Container style={{ marginTop: '3rem' }}>
+        <Container fluid style={{ marginTop: '5rem' }}>
           <h1>Resources: Learn More About Mental Illness</h1>
           <Row style={{ margin: `2rem`, justifyContent: `center` }}>
-            <h4 style={{ marginRight: `0.75rem` }}>Filter by category:</h4>
-            <Form style={{ marginLeft: `0.75rem` }}>
-              <Form.Control
-                as='select'
-                name='category'
-                id='category'
-                onChange={this.handleCategory}
-                value={this.state.category}
-              >
-                <option>All</option>
-                <option>Information</option>
-                <option>Stories</option>
-                <option>Support</option>
-              </Form.Control>
-            </Form>
+            <Col md={3}>
+              <Image
+                fluid
+                src='https://image.flaticon.com/icons/svg/1207/1207809.svg'
+                style={{ width: `12em`, height: `12em`, textAlign: `center` }}
+              />
+            </Col>
+            <Col md={3}>
+              <h5>
+                Knowledge is power, especially when it comes to mental health.
+                Learn more by browsing our full list of curated resources, or
+                filter by category.
+              </h5>
+              <h4 style={{ marginRight: `0.75rem` }}>Filter by category:</h4>
+          <Form style={{ marginLeft: `0.75rem` }}>
+            <Form.Control
+              as='select'
+              name='category'
+              id='category'
+              onChange={this.handleCategory}
+              value={this.state.category}
+            >
+              <option>All</option>
+              <option>Information</option>
+              <option>Stories</option>
+              <option>Support</option>
+            </Form.Control>
+          </Form>
+            </Col>
+            <Col md={3}>
+              <Image
+                fluid
+                src='https://image.flaticon.com/icons/svg/1207/1207807.svg'
+                style={{ width: `12em`, height: `12em`, textAlign: `center` }}
+              />
+            </Col>
           </Row>
         </Container>
         <Container>
-          <Row>{articleList}</Row>
+          <Row>
+            <CardColumns>{articleList}</CardColumns>
+          </Row>
         </Container>
       </Fragment>
     );
