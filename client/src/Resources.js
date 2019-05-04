@@ -38,9 +38,7 @@ class Resources extends Component {
                 target='_blank'
                 style={{ textDecoration: 'none', color: '#212529' }}
               >
-                <Card
-                  className='text-center card'
-                >
+                <Card className='text-center card'>
                   <Card.Header>
                     <h5>{article.title}</h5>
                   </Card.Header>
@@ -50,6 +48,9 @@ class Resources extends Component {
                       <p>{article.description}</p>
                     </Card.Text>
                   </Card.Body>
+                  <Card.Footer className='text-muted'>
+                    Category: {article.category}
+                  </Card.Footer>
                 </Card>
               </a>
             </div>
@@ -61,7 +62,9 @@ class Resources extends Component {
     return (
       <Fragment>
         <Container fluid style={{ marginTop: '5rem' }}>
-          <h1 style={{textAlign: `center`}}>Resources: Learn More About Mental Illness</h1>
+          <h1 style={{ textAlign: `center` }}>
+            Resources: Learn More About Mental Illness
+          </h1>
           <Row style={{ margin: `2rem`, justifyContent: `center` }}>
             <Col md={3}>
               <Image
@@ -77,20 +80,20 @@ class Resources extends Component {
                 filter by category.
               </p>
               <h4 style={{ marginRight: `0.75rem` }}>Filter by category:</h4>
-          <Form style={{ marginLeft: `0.75rem` }}>
-            <Form.Control
-              as='select'
-              name='category'
-              id='category'
-              onChange={this.handleCategory}
-              value={this.state.category}
-            >
-              <option>All</option>
-              <option>Information</option>
-              <option>Stories</option>
-              <option>Support</option>
-            </Form.Control>
-          </Form>
+              <Form style={{ marginLeft: `0.75rem` }}>
+                <Form.Control
+                  as='select'
+                  name='category'
+                  id='category'
+                  onChange={this.handleCategory}
+                  value={this.state.category}
+                >
+                  <option>All</option>
+                  <option>Information</option>
+                  <option>Stories</option>
+                  <option>Support</option>
+                </Form.Control>
+              </Form>
             </Col>
             <Col md={3}>
               <Image
