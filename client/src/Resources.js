@@ -8,6 +8,7 @@ import {
   CardColumns,
   Image,
 } from 'react-bootstrap';
+import './Resources.css';
 
 class Resources extends Component {
   constructor() {
@@ -74,11 +75,11 @@ class Resources extends Component {
               />
             </Col>
             <Col md={3}>
-              <h5>
+              <p>
                 Knowledge is power, especially when it comes to mental health.
                 Learn more by browsing our full list of curated resources, or
                 filter by category.
-              </h5>
+              </p>
               <h4 style={{ marginRight: `0.75rem` }}>Filter by category:</h4>
           <Form style={{ marginLeft: `0.75rem` }}>
             <Form.Control
