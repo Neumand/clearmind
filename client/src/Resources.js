@@ -39,11 +39,7 @@ class Resources extends Component {
                 style={{ textDecoration: 'none', color: '#212529' }}
               >
                 <Card
-                  className='text-center'
-                  style={{
-                    border: `1px solid rgba(0,0,0,.125)`,
-                    borderRadius: `.25rem`,
-                  }}
+                  className='text-center card'
                 >
                   <Card.Header>
                     <h5>{article.title}</h5>
@@ -65,7 +61,7 @@ class Resources extends Component {
     return (
       <Fragment>
         <Container fluid style={{ marginTop: '5rem' }}>
-          <h1>Resources: Learn More About Mental Illness</h1>
+          <h1 style={{textAlign: `center`}}>Resources: Learn More About Mental Illness</h1>
           <Row style={{ margin: `2rem`, justifyContent: `center` }}>
             <Col md={3}>
               <Image
