@@ -40,19 +40,33 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
+    // request appointments
     let token = 'Bearer ' + localStorage.getItem('jwt');
     let user_id = localStorage.getItem('user id');
     let url = '/api/v1/users/' + user_id;
     axios
       .get(url, { headers: { Authorization: token } })
-      .then(res => this.setState({ appointments: res.data, loaded: true }))
+      .then(res => {
+        this.setState({ appointments: res.data, loaded: true });
+      })
       .catch(err => console.log(err));
   }
 
   render() {
+    // copy the loaded appointments from state, sort them by date
+    let sortedArray = [...this.state.appointments];
+    sortedArray.sort((a, b) =>
+      new Date(a.details.date_time) > new Date(b.details.date_time)
+        ? 1
+        : new Date(a.details.date_time) < new Date(b.details.date_time)
+        ? -1
+        : 0,
+    );
     let outputArray;
+
+    // map them to return a table row
     if (this.state.loaded) {
-      outputArray = this.state.appointments.map(apt => {
+      outputArray = sortedArray.map(apt => {
         return (
           <tr key={apt.details.id} style={{ minHeight: `3 rem` }}>
             <td>{new Date(apt.details.date_time).toDateString()}</td>
