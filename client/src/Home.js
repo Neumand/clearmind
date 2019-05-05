@@ -8,20 +8,23 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Home.css';
+import Background from '../public/home-background.png';
 
 const Home = () => {
   return (
     <Fragment>
-      <Container className='clearmind-hero-pattern' fluid>
-        <Row>
-          <Col>
-            <h1 style={{ fontWeight: `bold` }}>Welcome to Clearmind</h1>
-            <p style={{ fontWeight: `bold` }}>
-              A platform to privately and securely grant access to professional
-              help to those in need.
-            </p>
-          </Col>
+      <Container className='clearmind-hero-pattern' fluid style={{backgroundImage: `url(${Background})`}}>
+        <Row style={{ alignItems: `center`, flexDirection: `column` }}>
+        <img src='/logo.png' style={{width: `15rem`, marginBottom: `-2rem`}} />
+          <h3 style={{ fontWeight: `bold` }}>
+            A platform to privately and securely grant access to professional
+            help to those in need.
+          </h3>
+        </Row>
+      </Container>
 
+      <Container>
+        <Row>
           <Col>
             <Media>
               <FontAwesomeIcon
@@ -37,6 +40,8 @@ const Home = () => {
                 </p>
               </Media.Body>
             </Media>
+          </Col>
+          <Col>
             <Media>
               <FontAwesomeIcon
                 icon={faTasks}
@@ -51,6 +56,8 @@ const Home = () => {
                 </p>
               </Media.Body>
             </Media>
+          </Col>
+          <Col>
             <Media>
               <FontAwesomeIcon
                 icon={faComments}
@@ -60,14 +67,14 @@ const Home = () => {
               <Media.Body>
                 <h5>Chat assistance</h5>
                 <p>
-                  Need someone to talk to or have quetions? Our team is ready to
-                  help with 24/7 customer assistance via integrated chat system.
+                  Our integrated chatbot will answer your general questions and allow you to book an appointment via messaging.
                 </p>
               </Media.Body>
             </Media>
           </Col>
         </Row>
       </Container>
+
       <Container>
         <Row>
           <Col xs={6}>
