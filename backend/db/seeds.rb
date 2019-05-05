@@ -51,89 +51,13 @@ puts "Creating specialists"
 puts "---------------"
 
     Specialist.create({
-        first_name: 'Jonathan',
-        last_name: 'Baldwin',
-        email: 'jbaldwin@clearmind.ca',
-        phone_number: Faker::Base.numerify('514-###-####'),
-        expertise: 'Cognitive-Behavioral Therapy',
-        image: 'https://randomuser.me/api/portraits/men/78.jpg',
-        clinic_id: 1,
-        schedule_id: 1
-    })
-
-    Specialist.create({
-        first_name: 'Caroline',
-        last_name: 'Beaudry',
-        email: 'cbeaudry@clearmind.ca',
-        phone_number: Faker::Base.numerify('514-###-####'),
-        expertise: 'Interpersonal Therapy',
-        image: 'https://randomuser.me/api/portraits/women/76.jpg',
-        clinic_id: 1,
-        schedule_id: 1
-    })
-
-    Specialist.create({
-        first_name: 'Molly',
-        last_name: 'White',
-        email: 'mwhite@clearmind.ca',
-        phone_number: Faker::Base.numerify('514-###-####'),
-        expertise: 'Interpersonal Therapy',
-        image: 'https://randomuser.me/api/portraits/women/3.jpg',
-        clinic_id: 1,
-        schedule_id: 1
-    })
-
-    Specialist.create({
-        first_name: 'Bryant',
-        last_name: 'Neil',
-        email: 'bneil@clearmind.ca',
-        phone_number: Faker::Base.numerify('514-###-####'),
-        expertise: 'Cognitive-Behavioral Therapy',
-        image: 'https://randomuser.me/api/portraits/men/91.jpg',
-        clinic_id: 1,
-        schedule_id: 1
-    })
-
-    Specialist.create({
-        first_name: 'Vanessa',
-        last_name: 'Roberts',
-        email: 'vroberts@clearmind.ca',
-        phone_number: Faker::Base.numerify('514-###-####'),
-        expertise: 'Family Therapy',
-        image: 'https://randomuser.me/api/portraits/women/36.jpg',
-        clinic_id: 2,
-        schedule_id: 1
-    })
-
-    Specialist.create({
-        first_name: 'Jeremie',
-        last_name: 'Turcotte',
-        email: 'jturcotte@clearmind.ca',
-        phone_number: Faker::Base.numerify('514-###-####'),
-        expertise: 'Psychodynamic Therapy',
-        image: 'https://randomuser.me/api/portraits/men/62.jpg',
-        clinic_id: 2,
-        schedule_id: 1
-    })
-
-    Specialist.create({
         first_name: 'Sophie',
         last_name: 'Vaillancourt',
         email: 'svaillancourt@clearmind.ca',
         phone_number: Faker::Base.numerify('514-###-####'),
+        title: 'Registered Professional Cousellor',
         expertise: 'Cognitive-Behavioral Therapy',
-        image: 'https://randomuser.me/api/portraits/women/53.jpg',
-        clinic_id: 2,
-        schedule_id: 1
-    })
-
-    Specialist.create({
-        first_name: 'Lucy',
-        last_name: 'Chen',
-        email: 'lchen@clearmind.ca',
-        phone_number: Faker::Base.numerify('514-###-####'),
-        expertise: 'Psychodynamic Therapy',
-        image: 'https://randomuser.me/api/portraits/women/85.jpg',
+        image: 'https://images.unsplash.com/photo-1513732822839-24f03a92f633?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80',
         clinic_id: 2,
         schedule_id: 1
     })
@@ -143,9 +67,94 @@ puts "---------------"
         last_name: 'Collins',
         email: 'acollins@clearmind.ca',
         phone_number: Faker::Base.numerify('514-###-####'),
+        title: 'Psychologist',
         expertise: 'Interpersonal Therapy',
-        image: 'https://randomuser.me/api/portraits/men/30.jpg',
+        image: 'https://images.pexels.com/photos/1181391/pexels-photo-1181391.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
         clinic_id: 2,
+        schedule_id: 1
+    })
+
+    Specialist.create({
+        first_name: 'Caroline',
+        last_name: 'Beaudry',
+        email: 'cbeaudry@clearmind.ca',
+        phone_number: Faker::Base.numerify('514-###-####'),
+        title: 'Psychiatrist',
+        expertise: 'Interpersonal Therapy',
+        image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        clinic_id: 1,
+        schedule_id: 1
+    })
+
+    Specialist.create({
+        first_name: 'Molly',
+        last_name: 'White',
+        email: 'mwhite@clearmind.ca',
+        phone_number: Faker::Base.numerify('514-###-####'),
+        title: 'Psychologist',
+        expertise: 'Interpersonal Therapy',
+        image: 'https://images.pexels.com/photos/38554/girl-people-landscape-sun-38554.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        clinic_id: 1,
+        schedule_id: 1
+    })
+
+    Specialist.create({
+        first_name: 'Brian',
+        last_name: 'Wong',
+        email: 'bwong@clearmind.ca',
+        phone_number: Faker::Base.numerify('514-###-####'),
+        title: 'Clinical Social Worker',
+        expertise: 'Cognitive-Behavioral Therapy',
+        image: 'https://images.pexels.com/photos/936593/pexels-photo-936593.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        clinic_id: 1,
+        schedule_id: 1
+    })
+
+    Specialist.create({
+        first_name: 'Aliyah',
+        last_name: 'Neil',
+        email: 'aneil@clearmind.ca',
+        phone_number: Faker::Base.numerify('514-###-####'),
+        title: 'Psychiatrist',
+        expertise: 'Psychodynamic Therapy',
+        image: 'https://images.pexels.com/photos/1181521/pexels-photo-1181521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        clinic_id: 2,
+        schedule_id: 1
+    })
+
+    Specialist.create({
+        first_name: 'Vanessa',
+        last_name: 'Roberts',
+        email: 'vroberts@clearmind.ca',
+        phone_number: Faker::Base.numerify('514-###-####'),
+        title: 'Marriage & Family Therapist',
+        expertise: 'Family Therapy',
+        image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        clinic_id: 2,
+        schedule_id: 1
+    })
+
+    Specialist.create({
+        first_name: 'Jeremie',
+        last_name: 'Turcotte',
+        email: 'jturcotte@clearmind.ca',
+        phone_number: Faker::Base.numerify('514-###-####'),
+        title: 'Psychologist',
+        expertise: 'Psychodynamic Therapy',
+        image: 'https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80',
+        clinic_id: 2,
+        schedule_id: 1
+    })
+
+    Specialist.create({
+        first_name: 'Jonathan',
+        last_name: 'Baldwin',
+        email: 'jbaldwin@clearmind.ca',
+        phone_number: Faker::Base.numerify('514-###-####'),
+        title: 'Clinical Social Worker',
+        expertise: 'Cognitive-Behavioral Therapy',
+        image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        clinic_id: 1,
         schedule_id: 1
     })
 
@@ -253,7 +262,5 @@ puts "---------------"
         session_details: "", 
         cancelled: false, 
         cancellation_reason: ""})
-    
-
 
 puts 'Done!'
