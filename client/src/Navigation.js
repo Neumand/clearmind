@@ -18,12 +18,16 @@ const Navigation = () => {
             Resources
           </Link>
           <NavDropdown title="Our Network" id="collasible-nav-dropdown">
-            <Link to="/specialists" className="dropdown-item">
-              Specialists
-            </Link>
-            <Link to="/clinics" className="dropdown-item">
-              Clinics
-            </Link>
+            <NavDropdown.Item>
+              <Link to="/specialists" className="dropdown-item">
+                Specialists
+              </Link>
+            </NavDropdown.Item>
+            <NavDropdown.Item>
+              <Link to="/clinics" className="dropdown-item">
+                Clinics
+              </Link>
+            </NavDropdown.Item>
           </NavDropdown>
         </Nav>
         {localStorage.getItem('jwt') ? (
