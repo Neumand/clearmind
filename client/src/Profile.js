@@ -118,7 +118,7 @@ class Profile extends React.Component {
                           ?
                         </Form.Label>
                         <Form.Control
-                          placeholder="Cancellation Reason"
+                          placeholder="Cancellation Reason(Optional)"
                           as="textarea"
                           rows="3"
                           value={this.state.sessionDetails}
