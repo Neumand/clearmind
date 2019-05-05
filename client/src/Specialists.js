@@ -54,8 +54,8 @@ class Specialists extends Component {
   submitBooking = (e, clinic, specialist) => {
     this.setState({
       confirmButton: (
-        <Spinner animation="border" variant="light" size="sm" role="status">
-          <span className="sr-only">Loading...</span>
+        <Spinner animation='border' variant='light' size='sm' role='status'>
+          <span className='sr-only'>Loading...</span>
         </Spinner>
       ),
     });
@@ -117,17 +117,22 @@ class Specialists extends Component {
     const specList = this.props.specialists.map(input => {
       return (
         <Col key={input.specialist.id} md={4}>
-          <Card className="card-margin">
-            <Card.Img variant="top" src={input.specialist.image} />
+          <Card className='card-margin'>
+            <Card.Img variant='top' src={input.specialist.image} />
             <Card.Body>
               <Card.Title>
                 <h5>
                   {input.specialist.first_name} {input.specialist.last_name}
                 </h5>
               </Card.Title>
-              <Card.Text>Expertise: {input.specialist.expertise}</Card.Text>
+              <Card.Text>
+                <p>
+                  <strong>{input.specialist.title}</strong>
+                </p>
+                <p>Expertise: {input.specialist.expertise}</p>
+              </Card.Text>
               <Button
-                variant="primary"
+                variant='primary'
                 onClick={e => {
                   this.handleShow(e, input.specialist.first_name);
                 }}
@@ -165,8 +170,8 @@ class Specialists extends Component {
                           minTime={setHours(setMinutes(new Date(), 0), 9)}
                           minDate={addDays(new Date(), 1)}
                           excludeTimes={this.specSchedule(input.apts)}
-                          dateFormat="MMMM d, yyyy h:mm aa"
-                          placeholderText="Please choose a date and time"
+                          dateFormat='MMMM d, yyyy h:mm aa'
+                          placeholderText='Please choose a date and time'
                         />
                       </Form.Group>
 
@@ -175,9 +180,9 @@ class Specialists extends Component {
                           Session Details <small>(Optional)</small>
                         </Form.Label>
                         <Form.Control
-                          placeholder="Is there anything we should know before the session?"
-                          as="textarea"
-                          rows="3"
+                          placeholder='Is there anything we should know before the session?'
+                          as='textarea'
+                          rows='3'
                           value={this.state.sessionDetails}
                           onChange={this.onDetailsChange}
                         />
@@ -186,17 +191,17 @@ class Specialists extends Component {
                   </Modal.Body>
                 ) : (
                   <Modal.Body>
-                    Please <Link to="/login">login</Link> to book an
+                    Please <Link to='/login'>login</Link> to book an
                     appointment.
                   </Modal.Body>
                 )}
                 <Modal.Footer>
-                  <Button variant="secondary" onClick={this.handleClose}>
+                  <Button variant='secondary' onClick={this.handleClose}>
                     Close
                   </Button>
                   {this.props.currentUser.id ? (
                     <Button
-                      variant="primary"
+                      variant='primary'
                       onClick={e =>
                         this.submitBooking(e, input.clinic, input.specialist)
                       }
@@ -204,7 +209,7 @@ class Specialists extends Component {
                       {this.state.confirmButton}
                     </Button>
                   ) : (
-                    <Button variant="primary" disabled>
+                    <Button variant='primary' disabled>
                       {this.state.confirmButton}
                     </Button>
                   )}
@@ -212,7 +217,7 @@ class Specialists extends Component {
               </Modal>
             </Card.Body>
             <Card.Footer>
-              <small className="text-muted">Clinic: {input.clinic.name} </small>
+              <small className='text-muted'>Clinic: {input.clinic.name} </small>
             </Card.Footer>
           </Card>
         </Col>
@@ -220,8 +225,8 @@ class Specialists extends Component {
     });
 
     return (
-      <Container className="margin-top">
-        <h1>Our specialists</h1>
+      <Container className='margin-top'>
+        <h1 style={{textAlign: `center`}}>Our Specialists</h1>
         <Row>
           <CardDeck>{specList}</CardDeck>
         </Row>
