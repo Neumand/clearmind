@@ -16,6 +16,7 @@ class Clinics extends React.Component {
     const clinicsList = this.props.clinics.map(clinic => {
       return (
         <Card
+          key={clinic.id}
           style={{ marginBottom: `2rem`, marginRight: `2rem` }}
           id={clinic.name}
           border={this.state.activeCard === clinic.name ? 'dark' : 'light'}
@@ -23,7 +24,7 @@ class Clinics extends React.Component {
           <Card.Body>
             <Card.Title>{clinic.name}</Card.Title>
             <Card.Text>
-              {clinic.description} <br /> <br /> {clinic.address}
+              {clinic.description} <br /> <br /> {clinic.address} <br />
               {clinic.phone_number}
             </Card.Text>
           </Card.Body>
