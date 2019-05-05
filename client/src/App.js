@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import Navigation from './Navigation';
+import Footer from'./Footer';
 import Home from './Home';
 import Specialists from './Specialists';
 import Resources from './Resources';
@@ -122,6 +123,7 @@ class App extends Component {
               <Route path="/profile" component={Profile} />
             </Fragment>
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     );

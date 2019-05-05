@@ -31,7 +31,7 @@ puts "---------------"
     Clinic.create({
         name: 'Mindwell',
         address: '7675 Avenue de Fougeray, Montreal, QC, H1K 3K3',
-        phone_number: Faker::Base.numerify('514-###-####'),
+        phone_number: '514-605-2555',
         description: 'Affordable psychology clinic offered for all ages.',
         latitude: '45.611626',
         longitude: '-73.5554274'
@@ -40,7 +40,7 @@ puts "---------------"
     Clinic.create({
         name: 'La Maison St. Pierre',
         address: '10 Pine Avenue West, Montreal, QC H2W 1P8',
-        phone_number: Faker::Base.numerify('514-###-####'),
+        phone_number: '514-473-2099',
         description: 'Psychotherapy centre for individual, couple and family therapy.',
         latitude: '45.5053204',
         longitude: '-73.5811828'
@@ -182,6 +182,30 @@ puts "---------------"
         description: 'Description of the various types of mental illness',
         thumbnail: 'https://image.freepik.com/free-vector/people-connecting-jigsaw-pieces-head-together_53876-64617.jpg',
         url: 'https://amiquebec.org/mental-illnesses/',
+        category: 'Information'
+    })
+
+    Article.create({
+        title: 'The Truth of the Streets',
+        description: 'And my life thereafter ...',
+        thumbnail: 'https://www.heretohelp.bc.ca/sites/default/files/the-truth-of-the-streets.jpg',
+        url: 'https://www.heretohelp.bc.ca/visions/housing-and-homelessness-vol4/the-truth-of-the-streets',
+        category: 'Stories'
+    })
+
+    Article.create({
+        title: 'My Mental Health Toolbelt',
+        description: 'Many programmers and other people in technology have shared their mental health struggles online.',
+        thumbnail: 'https://cdn-images-1.medium.com/max/1000/1*aIRUqrZKPs-Uw-mJuq4QEw.png',
+        url: 'https://medium.com/@taylorotwell/my-mental-health-toolbelt-9b9fdd4ae149',
+        category: 'Stories'
+    })
+
+    Article.create({
+        title: 'Fast Facts about Mental Illness',
+        description: 'CMHA summarises some key information about mental illness',
+        thumbnail: 'https://image.flaticon.com/icons/svg/1207/1207818.svg',
+        url: 'https://cmha.ca/about-cmha/fast-facts-about-mental-illness',
         category: 'Information'
     })
 
