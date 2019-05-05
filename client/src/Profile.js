@@ -68,7 +68,7 @@ class Profile extends React.Component {
     if (this.state.loaded) {
       outputArray = sortedArray.map(apt => {
         return (
-          <tr key={apt.details.id} style={{ minHeight: `3 rem` }}>
+          <tr key={apt.details.id} style={{ minHeight: `5 rem` }}>
             <td>{new Date(apt.details.date_time).toDateString()}</td>
             <td>
               {new Date(apt.details.date_time).toLocaleTimeString('en-CA')}
@@ -80,11 +80,13 @@ class Profile extends React.Component {
             ) : new Date(apt.details.date_time) >= Date.now() ? (
               <td>
                 <Button
+                  variant="danger"
+                  size="sm"
                   onClick={e => {
                     this.handleShow(e, apt.details.id);
                   }}
                 >
-                  <FontAwesomeIcon icon={faCalendarTimes} />
+                  <FontAwesomeIcon icon={faCalendarTimes} /> Cancel
                 </Button>
 
                 <Modal
