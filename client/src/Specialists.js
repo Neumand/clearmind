@@ -116,7 +116,7 @@ class Specialists extends Component {
   render() {
     const specList = this.props.specialists.map(input => {
       return (
-        <Col md={4}>
+        <Col key={input.specialist.id} md={4}>
           <Card className="card-margin">
             <Card.Img variant="top" src={input.specialist.image} />
             <Card.Body>
@@ -141,8 +141,8 @@ class Specialists extends Component {
                 onHide={this.handleClose}
               >
                 <Modal.Header closeButton>
-                  <Image src={input.specialist.image} rounded />
-                  <Modal.Title>
+                  <Image src={input.specialist.image} thumbnail />
+                  <Modal.Title style={{ marginLeft: `1REM` }}>
                     Booking a session with: {input.specialist.first_name}{' '}
                     {input.specialist.last_name}
                   </Modal.Title>
@@ -150,21 +150,30 @@ class Specialists extends Component {
                 {this.props.currentUser.id ? (
                   <Modal.Body>
                     <Form>
-                      <DatePicker
-                        selected={this.state.startDate}
-                        onChange={date => this.handleChange(date, input.apts)}
-                        showTimeSelect
-                        filterDate={this.isWeekday}
-                        timeIntervals={60}
-                        maxTime={setHours(setMinutes(new Date(), 0), 16)}
-                        minTime={setHours(setMinutes(new Date(), 0), 9)}
-                        minDate={addDays(new Date(), 1)}
-                        excludeTimes={this.specSchedule(input.apts)}
-                        dateFormat="MMMM d, yyyy h:mm aa"
-                        placeholderText="Please choose a date and time"
-                      />
                       <Form.Group>
-                        <Form.Label>Session Details</Form.Label>
+                        <Form.Label style={{ marginRight: `0.5REM` }}>
+                          Please pick a date and time:{' '}
+                        </Form.Label>
+
+                        <DatePicker
+                          filterDate={this.isWeekday}
+                          selected={this.state.startDate}
+                          onChange={date => this.handleChange(date, input.apts)}
+                          showTimeSelect
+                          timeIntervals={60}
+                          maxTime={setHours(setMinutes(new Date(), 0), 16)}
+                          minTime={setHours(setMinutes(new Date(), 0), 9)}
+                          minDate={addDays(new Date(), 1)}
+                          excludeTimes={this.specSchedule(input.apts)}
+                          dateFormat="MMMM d, yyyy h:mm aa"
+                          placeholderText="Please choose a date and time"
+                        />
+                      </Form.Group>
+
+                      <Form.Group>
+                        <Form.Label>
+                          Session Details <small>(Optional)</small>
+                        </Form.Label>
                         <Form.Control
                           placeholder="Is there anything we should know before the session?"
                           as="textarea"
