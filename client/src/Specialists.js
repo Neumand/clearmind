@@ -146,7 +146,7 @@ class Specialists extends Component {
                 onHide={this.handleClose}
               >
                 <Modal.Header closeButton>
-                  <Image src={input.specialist.image} thumbnail />
+                  <Image src={input.specialist.image} thumbnail style={{maxWidth: `30%`}} />
                   <Modal.Title style={{ marginLeft: `1REM` }}>
                     Booking a session with: {input.specialist.first_name}{' '}
                     {input.specialist.last_name}
