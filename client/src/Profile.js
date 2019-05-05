@@ -1,6 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Container, Button, Modal, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import {
+  Table,
+  Container,
+  Button,
+  Modal,
+  Form,
+  Col,
+  Row,
+} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -144,18 +153,44 @@ class Profile extends React.Component {
     return (
       <Container style={{ marginTop: `5REM` }}>
         <h1 style={{ paddingBottom: `2 rem` }}>Your appointments</h1>
-        <Table borderless responsive="sm">
-          <thead style={{ borderBottom: `1px solid black` }}>
-            <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Clinic</th>
-              <th>Specialist</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>{outputArray}</tbody>
-        </Table>
+        {this.state.appointments.length > 0 ? (
+          <Table borderless responsive="sm">
+            <thead style={{ borderBottom: `1px solid black` }}>
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Clinic</th>
+                <th>Specialist</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>{outputArray}</tbody>
+          </Table>
+        ) : (
+          <Row
+            style={{
+              flexDirection: `row`,
+              marginTop: `2REM`,
+              justifyContent: `center`,
+            }}
+          >
+            <Col md={4}>
+              <img
+                src="https://image.flaticon.com/icons/svg/1247/1247839.svg"
+                style={{ width: `5REM` }}
+              />
+            </Col>
+            <Col md={4}>
+              <p>
+                It seems that we don't have any appointments for you in our
+                system. Want to learn more before booking one? You can head over
+                to our <Link to="/specialists">resources</Link> page. If you
+                would like to book an appointment with one of our specialists
+                now, click <Link to="/specialists">here</Link>.
+              </p>
+            </Col>
+          </Row>
+        )}
       </Container>
     );
   }
