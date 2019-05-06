@@ -15,6 +15,11 @@
   margin: 2rem 0 2rem 0;
 }
 
+.heading {
+  color: #0C355C;
+  font-weight: bold;
+}
+
 .home-button:hover {
   background-color: dodgerblue;
   border-color:dodgerblue;
@@ -23,5 +28,4 @@
 
 .vector-column {
   align-self: flex-start;
-  text-align: center;
 }
