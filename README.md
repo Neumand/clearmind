@@ -20,9 +20,12 @@ Clearmind was developed as a final project for Lighthouse Labs' Demo Day for the
 
 ## Final Product
 
-[Clearmind Demo](https://i.imgur.com/CJ2jiMh.gif)
+### Main Functionality Demo
+![Clearmind Demo](https://i.imgur.com/CJ2jiMh.gif)
 
-[Chatbot Demo](https://i.imgur.com/HAPzxOR.gif)
+
+### Chatbot Demo
+![Chatbot Demo](https://i.imgur.com/HAPzxOR.gif)
 
 ## Tech Stack
 
