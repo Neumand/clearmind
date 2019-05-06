@@ -25,7 +25,7 @@ class Chatbot extends Component {
     // If not, chatbox iframe and the access button is not rendered
     if (localStorage.getItem('jwt')) {
       return (
-        <Navbar fixed="bottom" style={{ justifyContent: `flex-end` }}>
+        <Navbar fixed="bottom" style={{ flexDirection: `column`, alignItems: `flex-end` }}>
           <Button
             variant="dark"
             onClick={this.handleDisplay}
