@@ -192,6 +192,7 @@ class Profile extends React.Component {
               <img
                 src="https://image.flaticon.com/icons/svg/1247/1247839.svg"
                 style={{ width: `5REM` }}
+                alt="Calendar image"
               />
             </Col>
             <Col md={4}>
