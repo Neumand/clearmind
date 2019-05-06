@@ -1,8 +1,9 @@
 import React from 'react';
-import { Container, Row, Jumbotron, Table } from 'react-bootstrap';
+import { Container, Row, Jumbotron, Table, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import './Confirmation.css';
 
 const Confirmation = props => {
   const {
@@ -13,27 +14,29 @@ const Confirmation = props => {
     startTime,
   } = props.location.state;
   return (
-    <Container>
-      <Row>
-        <FontAwesomeIcon icon={faCheckCircle} size="6x" />
-      </Row>
+    <Container style={{marginTop: `6rem`}}>
       <Row>
         <Jumbotron>
+          <FontAwesomeIcon
+            icon={faCheckCircle}
+            size='6x'
+            style={{ color: `#5cb85c`, textAlign: `center` }}
+          />
           <h1>Confirmed!</h1>
           <p>
             Your booking has been confirmed and you will be receiving a
-            confirmation via the selected option shortly.
+            confirmation via text message shortly.
           </p>
           <p>Please see below for details regarding your appointment:</p>
           <h3>Session Details</h3>
-          <Table hover variant="success">
+          <Table>
             <thead>
               <tr>
                 <th>Specialist</th>
                 <th>Date</th>
                 <th>From</th>
                 <th>To</th>
-                <th colSpan="2">Clinic</th>
+                <th colSpan='2'>Clinic</th>
               </tr>
             </thead>
             <tbody>
@@ -49,8 +52,11 @@ const Confirmation = props => {
           </Table>
           <p>
             If you would like some more information, please check our{' '}
-            <Link to="/resources">resources</Link>.
+            <Link to='/resources'>resources</Link>.
           </p>
+          <Link to='/'>
+          <Button>Home</Button>
+          </Link>
         </Jumbotron>
       </Row>
     </Container>
