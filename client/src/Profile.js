@@ -199,9 +199,9 @@ class Profile extends React.Component {
               <p>
                 It seems that we don't have any appointments for you in our
                 system. Want to learn more before booking one? You can head over
-                to our <Link to="/specialists">resources</Link> page. If you
-                would like to book an appointment with one of our specialists
-                now, click <Link to="/specialists">here</Link>.
+                to our <Link to="/resources">resources</Link> page. If you would
+                like to book an appointment with one of our specialists now,
+                click <Link to="/specialists">here</Link>.
               </p>
             </Col>
           </Row>
