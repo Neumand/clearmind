@@ -72,7 +72,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div class="flex-wrapper">
           <Navigation />
           <Switch>
             <Route path="/" component={Home} exact />
