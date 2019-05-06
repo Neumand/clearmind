@@ -20,7 +20,7 @@ const Confirmation = props => {
         <Jumbotron>
           <FontAwesomeIcon
             icon={faCheckCircle}
-            size='6x'
+            size="6x"
             style={{ color: `#5cb85c`, textAlign: `center` }}
           />
           <h1>Confirmed!</h1>
@@ -37,7 +37,7 @@ const Confirmation = props => {
                 <th>Date</th>
                 <th>From</th>
                 <th>To</th>
-                <th colSpan='2'>Clinic</th>
+                <th colSpan="2">Clinic</th>
               </tr>
             </thead>
             <tbody>
@@ -53,9 +53,9 @@ const Confirmation = props => {
           </Table>
           <p>
             If you would like some more information, please check our{' '}
-            <Link to='/resources'>resources</Link>.
+            <Link to="/resources">resources</Link>.
           </p>
-          <Link to='/'>
+          <Link to="/">
             <Button>Home</Button>
           </Link>
         </Jumbotron>

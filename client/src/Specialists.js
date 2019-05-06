@@ -118,6 +118,11 @@ class Specialists extends Component {
     return timesArr;
   };
 
+  // Scroll to top on arrival to component
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     // For every specialist in database, returns a card HTML element
     // and a modal to book appointments. If user is logged in, modal

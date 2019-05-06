@@ -11,6 +11,11 @@ class Register extends Component {
     };
   }
 
+  // Scroll to top on arrival to component
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   // User creation POST request handler
   register = e => {
     e.preventDefault();

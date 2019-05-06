@@ -10,6 +10,12 @@ class Login extends Component {
       errorMessage: '',
     };
   }
+
+  // Scroll to top on arrival to component
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   // Collects form data and creates Auth object for JWT authentication
   handleAuth = e => {
     e.preventDefault();

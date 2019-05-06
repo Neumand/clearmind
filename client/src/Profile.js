@@ -68,6 +68,9 @@ class Profile extends React.Component {
         this.setState({ appointments: res.data, loaded: true });
       })
       .catch(err => console.log(err));
+
+    // Scroll to top on arrival to component
+    window.scrollTo(0, 0);
   }
 
   render() {

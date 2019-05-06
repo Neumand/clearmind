@@ -12,6 +12,11 @@ class Clinics extends React.Component {
     this.setState({ activeCard: input });
   };
 
+  // Scroll to top on arrival to component
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     // Maps loaded clinic array to return card elements
     const clinicsList = this.props.clinics.map(clinic => {
