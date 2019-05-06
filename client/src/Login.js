@@ -10,6 +10,7 @@ class Login extends Component {
       errorMessage: '',
     };
   }
+  // Collects form data and creates Auth object for JWT authentication
   handleAuth = e => {
     e.preventDefault();
     const email = document.getElementById('email').value;
@@ -20,7 +21,8 @@ class Login extends Component {
         password: password,
       },
     };
-
+    // On success, stores JWT token, current user data in localStorage
+    // On failure, displays notice next to Submit button
     post('/user_token', request)
       .then(res => {
         const { id, first_name } = res.data.user;

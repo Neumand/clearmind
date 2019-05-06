@@ -7,12 +7,13 @@ class Clinics extends React.Component {
     super(props);
     this.state = { activeCard: null };
   }
-
+  // State setter function to display clicked marker info
   borderChanger = input => {
     this.setState({ activeCard: input });
   };
 
   render() {
+    // Maps loaded clinic array to return card elements
     const clinicsList = this.props.clinics.map(clinic => {
       return (
         <Card
@@ -31,7 +32,8 @@ class Clinics extends React.Component {
         </Card>
       );
     });
-
+    // Container has rendered clinics and the Map component
+    // Map component has access to handler function and clinics as props.
     return (
       <Container style={{ marginTop: `5REM` }}>
         <h1 style={{ paddingBottom: `2 rem` }}>Our clinics</h1>

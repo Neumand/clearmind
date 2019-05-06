@@ -1,10 +1,11 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
+import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 const Logout = props => {
-  localStorage.removeItem("jwt");
-  localStorage.removeItem("user id");
-  localStorage.removeItem("user name");
+  // On logout destroy stored current user data and redirect to Home page.
+  localStorage.removeItem('jwt');
+  localStorage.removeItem('user id');
+  localStorage.removeItem('user name');
   props.resetUser();
   return <Redirect to="/" />;
 };

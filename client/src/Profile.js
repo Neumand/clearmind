@@ -24,6 +24,8 @@ class Profile extends React.Component {
     };
   }
 
+  // Helper methods and event handlers to open appropriate modal
+
   handleClose = () => {
     this.setState({ activeModal: null });
   };
@@ -32,14 +34,20 @@ class Profile extends React.Component {
     this.setState({ activeModal: appointment });
   };
 
+  // Capture form data for later PUT request
+
   onReasonChange = e => {
     this.setState({ cancellationReason: e.target.value });
   };
 
+  // Axios PUT request upon appointment cancellation
+
   cancelBooking = (e, appointment) => {
+    // retrieve JWT token from localStorage
     let token = 'Bearer ' + localStorage.getItem('jwt');
     let url = 'api/v1/appointments/' + appointment.id;
     let reason = this.state.cancellationReason;
+    // PUT using authorization header and send over data. Upon success close modal
     axios
       .put(url, { reason: reason }, { headers: { Authorization: token } })
       .then(res => {
@@ -49,10 +57,11 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
-    // request appointments
+    // Request appointments upon component mount
     let token = 'Bearer ' + localStorage.getItem('jwt');
     let user_id = localStorage.getItem('user id');
     let url = '/api/v1/users/' + user_id;
+    // axios GET request to load logged in users appointments
     axios
       .get(url, { headers: { Authorization: token } })
       .then(res => {
@@ -62,7 +71,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    // copy the loaded appointments from state, sort them by date
+    // Copy the loaded appointments from state, sort them by date
     let sortedArray = [...this.state.appointments];
     sortedArray.sort((a, b) =>
       new Date(a.details.date_time) > new Date(b.details.date_time)
@@ -71,10 +80,11 @@ class Profile extends React.Component {
         ? -1
         : 0,
     );
-    let outputArray;
 
-    // map them to return a table row
+    let outputArray;
+    // Map copied and sorted array elements to return a table row
     if (this.state.loaded) {
+      // Boolean checks for loading completion, prevents possible async issues
       outputArray = sortedArray.map(apt => {
         return (
           <tr key={apt.details.id} style={{ minHeight: `5 rem` }}>
@@ -150,6 +160,10 @@ class Profile extends React.Component {
         );
       });
     }
+
+    // Render Container with mapped appointments.
+    // If no appointments exist container is sent with a paragraph.
+    // Using ternary to check appontment array length.
     return (
       <Container style={{ marginTop: `5REM` }}>
         <h1 style={{ paddingBottom: `2 rem` }}>Your appointments</h1>

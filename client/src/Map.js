@@ -1,9 +1,13 @@
-import React from "react";
-import MapWrapper from "./MapWrapper";
-import { Marker } from "react-google-maps";
+import React from 'react';
+import MapWrapper from './MapWrapper';
+import { Marker } from 'react-google-maps';
 
 class MapComponent extends React.Component {
+  // React-google-maps starts out its life as a function component
+  // We destructured it to a class component to be able to pass it props.
+  // This allows us to dynamically create markers instead of hard coding location.
   render() {
+    // Array of clinics stored in props converted to markers
     const clinicMarkers = this.props.clinics.map(clinic => {
       return (
         <Marker
@@ -14,11 +18,13 @@ class MapComponent extends React.Component {
           }}
           position={{
             lat: Number(clinic.latitude),
-            lng: Number(clinic.longitude)
+            lng: Number(clinic.longitude),
           }}
         />
       );
     });
+    // Calls MapWrapper.js function component
+    // Passes it map properties and markers
     return (
       <MapWrapper
         googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrU7R8DWzFJpIkjjuqVgpcurKSZtiJ9xI"
