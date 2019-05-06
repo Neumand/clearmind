@@ -13,9 +13,16 @@ import Background from '../public/home-background.png';
 const Home = () => {
   return (
     <Fragment>
-      <Container className='clearmind-hero-pattern' fluid style={{backgroundImage: `url(${Background})`}}>
+      <Container
+        className='clearmind-hero-pattern'
+        fluid
+        style={{ backgroundImage: `url(${Background})` }}
+      >
         <Row style={{ alignItems: `center`, flexDirection: `column` }}>
-        <img src='/logo.png' style={{width: `15rem`, marginBottom: `-2rem`}} />
+          <img
+            src='/logo.png'
+            style={{ width: `15rem`, marginBottom: `-2rem` }}
+          />
           <h3 style={{ fontWeight: `bold` }}>
             A platform to privately and securely grant access to professional
             help to those in need.
@@ -23,7 +30,7 @@ const Home = () => {
         </Row>
       </Container>
 
-      <Container>
+      <Container style={{marginTop: `7rem`, marginBottom: `7rem`}}>
         <Row>
           <Col>
             <Media>
@@ -67,7 +74,8 @@ const Home = () => {
               <Media.Body>
                 <h5>Chat assistance</h5>
                 <p>
-                  Our integrated chatbot will answer your general questions and allow you to book an appointment via messaging.
+                  Our integrated chatbot will answer your general questions and
+                  allow you to book an appointment via messaging.
                 </p>
               </Media.Body>
             </Media>
@@ -75,62 +83,34 @@ const Home = () => {
         </Row>
       </Container>
 
+      {/* Vector section */}
       <Container>
-        <Row>
-          <Col xs={6}>
-            <Card className='card-hover'>
-              <Card.Img
-                variant='top'
-                src='https://images.unsplash.com/photo-1514845994104-1be22149278b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
-                width={200}
-                height={200}
-              />
-              <Card.ImgOverlay>
-                <Card.Title style={{ color: `whitesmoke` }}>
-                  Talk to One of Our Specialists
-                </Card.Title>
-              </Card.ImgOverlay>
-              <Card.Body>
-                <Card.Text style={{ textDecoration: `none` }}>
-                  <p style={{ textDecoration: `none` }}>
-                    Our specialists are here to listen with empathy, full
-                    confidentiality and without judgment. Speak to one today to
-                    help restore balance to your mind.
-                  </p>
-                  <Link to='/specialists'>
-                    <Button variant='light'>Book a session</Button>
-                  </Link>
-                </Card.Text>
-              </Card.Body>
-            </Card>
+        <Row style={{marginBottom: `5rem`}}>
+          <Col>
+            <img src='/best-self.png' style={{maxWidth: `100%`}} />
           </Col>
-          <Col xs={6}>
-            <Card className='card-hover'>
-              <Card.Img
-                variant='top'
-                src='https://images.unsplash.com/photo-1471440671318-55bdbb772f93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80'
-                width={200}
-                height={200}
-              />
-              <Card.ImgOverlay>
-                <Card.Title style={{ color: `whitesmoke` }}>
-                  Learn More
-                </Card.Title>
-              </Card.ImgOverlay>
-              <Card.Body>
-                <Card.Text>
-                  <p style={{ textDecoration: `none` }}>
-                    Browse our available resources to learn more about mental
-                    health or find out how you can help.
-                  </p>
-                  <Link to='/resources'>
-                    <Button variant='light' className='home-button'>
-                      Explore resources
-                    </Button>
-                  </Link>
-                </Card.Text>
-              </Card.Body>
-            </Card>
+          <Col className='vector-column'>
+            <h3 style={{ color: `#0C355C`, fontWeight: `bold` }}>
+              Your Best Self
+            </h3>
+            <p>Lorem ipsum descriptum maximum </p>
+            <Link to='/register'>
+              <Button>Register now to talk to someone</Button>
+            </Link>
+          </Col>
+        </Row>
+        <Row>
+          <Col className='vector-column'>
+          <h3 style={{ color: `#0C355C`, fontWeight: `bold` }}>
+              Your Loved Ones Care
+            </h3>
+            <p>Lorem ipsum descriptum maximum </p>
+            <Link to='/resources'>
+              <Button>Learn more about mental health</Button>
+            </Link>
+          </Col>
+          <Col>
+          <img src='/friends-family.png' style={{maxWidth: `100%`}} />
           </Col>
         </Row>
       </Container>

@@ -18,6 +18,10 @@ class Resources extends Component {
     };
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+}
+
   handleCategory = e => {
     const option = e.target.value;
     if (option === 'All') {

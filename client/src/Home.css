@@ -20,3 +20,8 @@
   border-color:dodgerblue;
   transition: all 400ms linear;
 }
+
+.vector-column {
+  align-self: flex-start;
+  text-align: center;
+}

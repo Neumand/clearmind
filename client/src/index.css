@@ -4,3 +4,8 @@ body {
   font-family: 'Cabin', sans-serif;
   background-color: aliceblue
 }
+
+.btn-primary {
+  background-color: #0C355C;
+  border-color: #0C355C;
+}
