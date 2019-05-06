@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Navigation from './Navigation';
 import Footer from './Footer';
@@ -73,29 +73,28 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Navigation />
-          <Switch>
-            <Fragment>
-              <Route path="/" component={Home} exact />
+            <Switch>
+              <Route path='/' component={Home} exact />
               <Route
-                path="/resources"
+                path='/resources'
                 render={props => (
                   <Resources {...props} articles={this.state.articles} />
                 )}
               />
               <Route
-                path="/login"
+                path='/login'
                 render={props => (
                   <Login {...props} currentUser={this.setCurrentUser} />
                 )}
               />
               <Route
-                path="/logout"
+                path='/logout'
                 render={props => (
                   <Logout {...props} resetUser={this.resetCurrentUser} />
                 )}
               />
               <Route
-                path="/specialists"
+                path='/specialists'
                 render={props => (
                   <Specialists
                     {...props}
@@ -105,24 +104,23 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/clinics"
+                path='/clinics'
                 render={props => (
                   <Clinics {...props} clinics={this.state.clinics} />
                 )}
               />
               <Route
-                path="/register"
+                path='/register'
                 render={props => (
                   <Register {...props} setCurrentUser={this.setCurrentUser} />
                 )}
               />
               <Route
-                path="/confirmation"
+                path='/confirmation'
                 render={props => <Confirmation {...props} />}
               />
-              <Route path="/profile" component={Profile} />
-            </Fragment>
-          </Switch>
+              <Route path='/profile' component={Profile} />
+            </Switch>
           <Footer />
         </div>
       </BrowserRouter>
