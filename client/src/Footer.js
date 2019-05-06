@@ -13,6 +13,7 @@ class Footer extends Component {
     };
   }
 
+  // Event handler for chatbox access button
   handleDisplay = e => {
     this.state.display === 'none'
       ? this.setState({ display: '' })
@@ -20,6 +21,8 @@ class Footer extends Component {
   };
 
   render() {
+    // If user is authenticated display chatbox
+    // If not, chatbox iframe and the access button is not rendered
     if (localStorage.getItem('jwt')) {
       return (
         <Navbar fixed="bottom" style={{ justifyContent: `flex-end` }}>
