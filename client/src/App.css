@@ -34,3 +34,10 @@
 .min-60 {
   min-width: 60rem;
 }
+
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
