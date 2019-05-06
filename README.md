@@ -50,8 +50,10 @@ Clearmind was developed as a final project for Lighthouse Labs' Demo Day for the
   * Once you have obtained your Account SID and Authentication Token, create a `.env` file in the /backend folder
   * In that file, enter the following:
 
-    `TWILIO_ACCOUNT_SID=your_account_sid_here
-    TWILIO_AUTH_TOKEN=your_auth_token_here`
+    `TWILIO_ACCOUNT_SID=your_account_sid_here`
+    
+    `TWILIO_AUTH_TOKEN=your_auth_token_here`
+
 3. In the /client folder, run `npm install`
 4. Start the back-end server using `rails s -p 3001`
 5. Start the front-end server using `npm start`
