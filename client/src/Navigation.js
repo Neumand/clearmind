@@ -6,7 +6,11 @@ const Navigation = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
       <Link to="/" className="navbar-brand">
-        <img src="/nav-logo.png" style={{ width: `2em`, height: `auto` }} />
+        <img
+          src="/nav-logo.png"
+          style={{ width: `2em`, height: `auto` }}
+          alt="logo"
+        />
       </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">

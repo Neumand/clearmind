@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { post } from 'axios';
-import { Container, Form, Button, Col, Row } from 'react-bootstrap';
+import { Container, Form, Button, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 class Login extends Component {

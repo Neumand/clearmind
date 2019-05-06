@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import Navigation from './Navigation';
-import Footer from'./Footer';
+import Footer from './Footer';
 import Home from './Home';
 import Specialists from './Specialists';
 import Resources from './Resources';
@@ -12,7 +12,7 @@ import Register from './Register';
 import Confirmation from './Confirmation';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Profile from './Profile';
-import css from './App.css';
+import './App.css';
 
 class App extends Component {
   state = {

@@ -66,7 +66,7 @@ class Register extends Component {
     // Form group to register a user
     return (
       <Fragment>
-        <Container style={{ 'margin-top': `5REM` }}>
+        <Container style={{ marginTop: `5REM` }}>
           <h1>Register</h1>
           <p>Please fill out all of the below fields</p>
           <Form onSubmit={this.register}>

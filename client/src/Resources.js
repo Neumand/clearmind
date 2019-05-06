@@ -31,24 +31,24 @@ class Resources extends Component {
     const articleList = this.props.articles.map(article => {
       if (this.state.category.includes(article.category)) {
         return (
-          <Col>
-            <div key={article.id}>
+          <Col key={article.id}>
+            <div>
               <a
                 href={article.url}
-                target='_blank'
+                target="_blank"
                 style={{ textDecoration: 'none', color: '#212529' }}
               >
-                <Card className='text-center card'>
+                <Card className="text-center card">
                   <Card.Header>
                     <h5>{article.title}</h5>
                   </Card.Header>
-                  <Card.Img variant='top' src={article.thumbnail} />
+                  <Card.Img variant="top" src={article.thumbnail} />
                   <Card.Body>
                     <Card.Text>
                       <p>{article.description}</p>
                     </Card.Text>
                   </Card.Body>
-                  <Card.Footer className='text-muted'>
+                  <Card.Footer className="text-muted">
                     Category: {article.category}
                   </Card.Footer>
                 </Card>
@@ -69,7 +69,7 @@ class Resources extends Component {
             <Col md={3}>
               <Image
                 fluid
-                src='https://image.flaticon.com/icons/svg/1207/1207809.svg'
+                src="https://image.flaticon.com/icons/svg/1207/1207809.svg"
                 style={{ width: `12em`, height: `12em`, textAlign: `center` }}
               />
             </Col>
@@ -82,9 +82,9 @@ class Resources extends Component {
               <h4 style={{ marginRight: `0.75rem` }}>Filter by category:</h4>
               <Form style={{ marginLeft: `0.75rem` }}>
                 <Form.Control
-                  as='select'
-                  name='category'
-                  id='category'
+                  as="select"
+                  name="category"
+                  id="category"
                   onChange={this.handleCategory}
                   value={this.state.category}
                 >
@@ -98,7 +98,7 @@ class Resources extends Component {
             <Col md={3}>
               <Image
                 fluid
-                src='https://image.flaticon.com/icons/svg/1207/1207807.svg'
+                src="https://image.flaticon.com/icons/svg/1207/1207807.svg"
                 style={{ width: `12em`, height: `12em`, textAlign: `center` }}
               />
             </Col>
