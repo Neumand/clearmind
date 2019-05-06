@@ -1,9 +1,27 @@
 .card {
-  border: 1px solid rgba(0,0,0,.125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
 
 .card:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: linear 300ms all;
+}
+
+.image-container {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.header-image {
+  width: 12em;
+  height: 12em;
+  margin: 2rem;
+}
+
+.header-body {
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
 }
