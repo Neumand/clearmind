@@ -15,7 +15,6 @@
     "react-iframe": "^1.8.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "0.9.5",
-    "react-transition-group": "^4.0.0",
     "recompose": "^0.30.0"
   },
   "devDependencies": {
