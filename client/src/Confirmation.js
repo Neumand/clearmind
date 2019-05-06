@@ -1,5 +1,4 @@
 import React from 'react';
-import {TransitionGroup, CSSTransition} from 'react-transition-group';
 import { Container, Row, Jumbotron, Table, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
@@ -14,8 +13,9 @@ const Confirmation = props => {
     location,
     startTime,
   } = props.location.state;
+
   return (
-    <Container style={{marginTop: `6rem`}}>
+    <Container style={{ marginTop: `6rem` }}>
       <Row>
         <Jumbotron>
           <FontAwesomeIcon
@@ -56,7 +56,7 @@ const Confirmation = props => {
             <Link to='/resources'>resources</Link>.
           </p>
           <Link to='/'>
-          <Button>Home</Button>
+            <Button>Home</Button>
           </Link>
         </Jumbotron>
       </Row>
