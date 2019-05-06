@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Navigation from './Navigation';
 import Footer from './Footer';
+import Chatbot from './Chatbot';
 import Home from './Home';
 import Specialists from './Specialists';
 import Resources from './Resources';
@@ -73,54 +74,55 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Navigation />
-            <Switch>
-              <Route path='/' component={Home} exact />
-              <Route
-                path='/resources'
-                render={props => (
-                  <Resources {...props} articles={this.state.articles} />
-                )}
-              />
-              <Route
-                path='/login'
-                render={props => (
-                  <Login {...props} currentUser={this.setCurrentUser} />
-                )}
-              />
-              <Route
-                path='/logout'
-                render={props => (
-                  <Logout {...props} resetUser={this.resetCurrentUser} />
-                )}
-              />
-              <Route
-                path='/specialists'
-                render={props => (
-                  <Specialists
-                    {...props}
-                    specialists={this.state.specialists}
-                    currentUser={this.state.currentUser}
-                  />
-                )}
-              />
-              <Route
-                path='/clinics'
-                render={props => (
-                  <Clinics {...props} clinics={this.state.clinics} />
-                )}
-              />
-              <Route
-                path='/register'
-                render={props => (
-                  <Register {...props} setCurrentUser={this.setCurrentUser} />
-                )}
-              />
-              <Route
-                path='/confirmation'
-                render={props => <Confirmation {...props} />}
-              />
-              <Route path='/profile' component={Profile} />
-            </Switch>
+          <Switch>
+            <Route path="/" component={Home} exact />
+            <Route
+              path="/resources"
+              render={props => (
+                <Resources {...props} articles={this.state.articles} />
+              )}
+            />
+            <Route
+              path="/login"
+              render={props => (
+                <Login {...props} currentUser={this.setCurrentUser} />
+              )}
+            />
+            <Route
+              path="/logout"
+              render={props => (
+                <Logout {...props} resetUser={this.resetCurrentUser} />
+              )}
+            />
+            <Route
+              path="/specialists"
+              render={props => (
+                <Specialists
+                  {...props}
+                  specialists={this.state.specialists}
+                  currentUser={this.state.currentUser}
+                />
+              )}
+            />
+            <Route
+              path="/clinics"
+              render={props => (
+                <Clinics {...props} clinics={this.state.clinics} />
+              )}
+            />
+            <Route
+              path="/register"
+              render={props => (
+                <Register {...props} setCurrentUser={this.setCurrentUser} />
+              )}
+            />
+            <Route
+              path="/confirmation"
+              render={props => <Confirmation {...props} />}
+            />
+            <Route path="/profile" component={Profile} />
+          </Switch>
+          <Chatbot />
           <Footer />
         </div>
       </BrowserRouter>
