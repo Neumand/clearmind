@@ -1,5 +1,9 @@
 # **Clearmind**
 
+### Live Demo - [Heroku](clearmind-demo.herokuapp.com)
+
+You can login to  demo app using `username:test@example.com` and `password:testing` or you can create an account. 
+
 ### Contributors
 * [David Neuman](https://github.com/Neumand)
 * [Duruhan Unsal](https://github.com/reshux/)
