@@ -1,6 +1,6 @@
 # **Clearmind**
 
-### Live Demo - [Heroku](clearmind-demo.herokuapp.com)
+### Live Demo - [Heroku](http://clearmind-demo.herokuapp.com)
 
 You can login to  demo app using `username:test@example.com` and `password:testing` or you can create an account. 
 
