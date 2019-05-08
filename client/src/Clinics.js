@@ -41,7 +41,7 @@ class Clinics extends React.Component {
     // Map component has access to handler function and clinics as props.
     return (
       <Container style={{ marginTop: `5REM` }}>
-        <h1 style={{ paddingBottom: `2 rem` }}>Our clinics</h1>
+        <h1 style={{ paddingBottom: `2 rem` }}>Our Clinics</h1>
         <p>
           You can click on the map marker to highlight that clinic's
           information.
