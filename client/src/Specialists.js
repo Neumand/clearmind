@@ -244,7 +244,10 @@ class Specialists extends Component {
 
     return (
       <Container className="margin-top">
-        <h1 style={{ textAlign: `center` }}>Our Specialists</h1>
+        <h1>Our Specialists</h1>
+        <p>
+          Book an appointment with a specialist whose experience and area of focus are best suited to your personal situation.
+        </p>
         <Row>
           <CardDeck>{specList}</CardDeck>
         </Row>
