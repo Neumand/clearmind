@@ -16,7 +16,7 @@ const Navigation = () => {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Link to="/specialists" className="nav-link">
-            Get Help
+            Book an Appointment
           </Link>
           <Link to="/resources" className="nav-link">
             Resources
